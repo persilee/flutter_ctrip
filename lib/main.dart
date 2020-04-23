@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     TextStyle textStyle = TextStyle(fontSize: 20);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
