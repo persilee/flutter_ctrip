@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_ctrip/model/home_model.dart';
 import 'package:http/http.dart' as http;
 
-const HOME_URL = 'http://www.devio.org/io/flutter_app/json/home_page.json';
+const HOME_URL = 'https://cdn.lishaoy.net/flutter_app/json/home_page.json';
 
 //首页大接口
 class HomeDao {

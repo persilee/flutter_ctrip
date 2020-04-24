@@ -17,4 +17,14 @@ class CommonModel {
         hideAppBar: json['hideAppBar']
     );
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['icon'] = this.icon;
+    data['title'] = this.title;
+    data['url'] = this.title;
+    data['statusBarColor'] = this.title;
+    data['hideAppBar'] = this.title;
+    return data;
+  }
 }
