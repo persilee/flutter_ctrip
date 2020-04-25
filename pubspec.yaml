@@ -26,6 +26,7 @@ dependencies:
   flutter_color_plugin: ^0.0.2
   flutter_swiper: ^1.1.6
   http: ^0.12.0+4
+  flutter_webview_plugin: ^0.3.11
 
 dev_dependencies:
   flutter_test:

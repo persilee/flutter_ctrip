@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/home_dao.dart';
 import 'package:flutter_ctrip/model/common_model.dart';
+import 'package:flutter_ctrip/model/grid_nav_model.dart';
 import 'package:flutter_ctrip/model/home_model.dart';
+import 'package:flutter_ctrip/widget/grid_nav.dart';
 import 'package:flutter_ctrip/widget/local_nav.dart';
+import 'package:flutter_ctrip/widget/sub_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'dart:convert';
 
@@ -25,6 +28,8 @@ class _HomePageState extends State<HomePage> {
 
   double appBarAlpha = 0;
   List<CommonModel> localNavList = [];
+  GridNavModel gridNavModel;
+  List<CommonModel> subNavList = [];
 
   @override
   void initState() {
@@ -51,42 +56,48 @@ class _HomePageState extends State<HomePage> {
               },
               child: ListView(
                 children: <Widget>[
-                  Stack(
-                    overflow: Overflow.visible,
-                    children: <Widget>[
-                      Container(
-                        height: 182,
-                        child: Swiper(
-                          itemCount: _imageUrls.length,
-                          autoplay: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Image.network(
-                              _imageUrls[index],
-                              fit: BoxFit.fill,
-                            );
-                          },
-                          pagination: SwiperPagination(),
-                        ),
-                      ),
-                      Positioned(
-                        top: 158,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          padding: EdgeInsets.fromLTRB(14, 0, 14, 0),
-                          child: LocalNav(
-                            localNavList: localNavList,
+                  Container(
+                    height: 230,
+                    child: Stack(
+//                    overflow: Overflow.visible,
+                      children: <Widget>[
+                        Container(
+                          height: 182,
+                          child: Swiper(
+                            itemCount: _imageUrls.length,
+                            autoplay: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Image.network(
+                                _imageUrls[index],
+                                fit: BoxFit.fill,
+                              );
+                            },
+                            pagination: SwiperPagination(),
                           ),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          top: 158,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.fromLTRB(14, 0, 14, 0),
+                            child: LocalNav(
+                              localNavList: localNavList,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(14, 0, 14, 0),
-                    margin: EdgeInsets.only(top: 62),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Column(
+                      children: <Widget>[
+                        GridNav(gridNavModel: gridNavModel,),
+                        Padding(padding: EdgeInsets.only(top: 10),),
+                        SubNav(subNavList: subNavList,),
+                      ],
                     ),
-                    height: 700,
                   ),
                 ],
               ),
@@ -128,6 +139,8 @@ class _HomePageState extends State<HomePage> {
       HomeModel homeModel = await HomeDao.fetch();
       setState(() {
         localNavList = homeModel.localNavList;
+        gridNavModel = homeModel.gridNav;
+        subNavList = homeModel.subNavList;
       });
     } catch (e) {
       setState(() {
