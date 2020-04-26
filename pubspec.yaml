@@ -48,6 +48,20 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+  assets:
+    - images/type_channelplane.png
+    - images/type_district.png
+    - images/type_food.png
+    - images/type_hotel.png
+    - images/type_huodong.png
+    - images/type_shop.png
+    - images/type_sight.png
+    - images/type_ticket.png
+    - images/type_travelgroup.png
+    - images/type_channelgroup.png
+    - images/type_channelgs.png
+    - images/type_channeltrain.png
+    - images/type_cruise.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

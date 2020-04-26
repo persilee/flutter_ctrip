@@ -27,7 +27,7 @@ class SalesBox extends StatelessWidget {
           height: 45,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(4),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,15 +69,15 @@ class SalesBox extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 2),
+          padding: EdgeInsets.only(top: 4),
         ),
         items[0],
         Padding(
-          padding: EdgeInsets.only(top: 2),
+          padding: EdgeInsets.only(top: 4),
         ),
         items[1],
         Padding(
-          padding: EdgeInsets.only(top: 2),
+          padding: EdgeInsets.only(top: 4),
         ),
         items[2],
       ],
@@ -110,7 +110,7 @@ class SalesBox extends StatelessWidget {
         },
         child: Container(
           height: big?144:89,
-          margin: left?EdgeInsets.only(right: 2):EdgeInsets.zero,
+          margin: left?EdgeInsets.only(right: 4):EdgeInsets.zero,
           decoration: BoxDecoration(
             color: Colors.white,
           ),
