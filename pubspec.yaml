@@ -86,5 +86,13 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: PingFang
+      fonts:
+        - asset: fonts/PingFang-Regular.ttf
+        - asset: fonts/PingFang-Italic.ttf
+        - asset: fonts/PingFang_Bold.ttf
+          style: italic
+          weight: 500
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

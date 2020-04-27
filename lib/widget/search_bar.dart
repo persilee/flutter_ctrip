@@ -131,7 +131,7 @@ class _SearchBarState extends State<SearchBar> {
       inputBoxColor = Color(int.parse('0xffEDEDED'));
     }
     return Container(
-      height: 38,
+      height: 30,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
           color: inputBoxColor,
@@ -148,9 +148,6 @@ class _SearchBarState extends State<SearchBar> {
                 ? Color(0xffA9A9A9)
                 : Colors.blue,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 6),
-          ),
           Expanded(
               flex: 1,
               child: widget.searchBarType == SearchBarType.normal
@@ -165,10 +162,11 @@ class _SearchBarState extends State<SearchBar> {
                       //输入文本的样式
                       decoration: InputDecoration(
                         border: InputBorder.none,
+                        contentPadding: EdgeInsets.fromLTRB(4, 11, 4, 11),
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(
                           fontSize: 15,
-                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Microsoft Yahei',
                         ),
                       ))
                   : _wrapTap(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/search_dao.dart';
 import 'package:flutter_ctrip/model/seach_model.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
+import 'package:flutter_ctrip/widget/webview.dart';
 
 const TYPES = [
   'channelgroup',
@@ -27,7 +28,7 @@ class SearchPage extends StatefulWidget {
   final String keyword;
   final String hint;
 
-  SearchPage({this.hideLeft, this.searchUrl = URL, this.keyword, this.hint="目的地|酒店|景点|航班号"});
+  SearchPage({this.hideLeft = true, this.searchUrl = URL, this.keyword, this.hint="目的地|酒店|景点|航班号"});
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -72,7 +73,17 @@ class _SearchPageState extends State<SearchPage> {
     if (searchModel == null || searchModel.data == null) return null;
     SearchItem item = searchModel.data[position];
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebView(
+              url: item.url,
+              title: '详情',
+            ),
+          ),
+        );
+      },
       child: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -224,7 +235,6 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _isSubTitle(SearchItem item) {
-    print(item.price);
     return item.price!=null?Container(
       width: 300,
       margin: EdgeInsets.only(top: 5),
