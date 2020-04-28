@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/dao/travel_params_dao.dart';
 import 'package:flutter_ctrip/dao/travel_tab_dao.dart';
+import 'package:flutter_ctrip/model/travel_params_model.dart';
 import 'package:flutter_ctrip/model/travel_tab_model.dart';
+import 'package:flutter_ctrip/pages/travel_tab_page.dart';
 
 class TravelPage extends StatefulWidget {
   @override
@@ -10,7 +13,8 @@ class TravelPage extends StatefulWidget {
 class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   TabController _controller;
   List<Groups> tabs = [];
-  TravelTabModel _travelTabModel;
+  TravelTabModel travelTabModel;
+  TravelParamsModel travelParamsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
         children: <Widget>[
           Container(
             color: Colors.white,
-            padding: EdgeInsets.only(top: 30),
+            padding: EdgeInsets.fromLTRB(2, 30, 0, 0),
             child: TabBar(
               controller: _controller,
               isScrollable: true,
@@ -39,6 +43,19 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
               }).toList(),
             ),
           ),
+          Flexible(
+              child: Container(
+            padding: EdgeInsets.fromLTRB(6, 3, 6, 0),
+            child: TabBarView(
+                controller: _controller,
+                children: tabs.map((Groups tab) {
+                  return TravelTabPage(
+                    travelUrl: travelParamsModel.url,
+                    params: travelParamsModel.params,
+                    groupChannelCode: tab.code,
+                  );
+                }).toList()),
+          )),
         ],
       ),
     );
@@ -53,11 +70,12 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
           vsync: this); //fix tab label 空白问题
       setState(() {
         tabs = model.district.groups;
-        _travelTabModel = model;
+        travelTabModel = model;
       });
     }).catchError((e) {
       print(e);
     });
+    _loadParams();
     super.initState();
   }
 
@@ -65,5 +83,15 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _loadParams() {
+    TravelParamsDao.fetch().then((TravelParamsModel model) {
+      setState(() {
+        travelParamsModel = model;
+      });
+    }).catchError((e) {
+      print(e);
+    });
   }
 }
