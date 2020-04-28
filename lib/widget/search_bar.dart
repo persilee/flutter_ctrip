@@ -64,7 +64,7 @@ class _SearchBarState extends State<SearchBar> {
                   : Icon(
                       Icons.arrow_back_ios,
                       color: Colors.grey,
-                      size: 26,
+                      size: 24,
                     ),
             ),
             widget.leftButtonClick),
@@ -88,23 +88,6 @@ class _SearchBarState extends State<SearchBar> {
   _genHomeSearch() {
     return Container(
       child: Row(children: <Widget>[
-        _wrapTap(
-            Container(
-                padding: EdgeInsets.fromLTRB(6, 5, 5, 5),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      '上海',
-                      style: TextStyle(color: _homeFontColor(), fontSize: 14),
-                    ),
-                    Icon(
-                      Icons.expand_more,
-                      color: _homeFontColor(),
-                      size: 22,
-                    )
-                  ],
-                )),
-            widget.leftButtonClick),
         Expanded(
           flex: 1,
           child: _inputBox(),
@@ -144,9 +127,7 @@ class _SearchBarState extends State<SearchBar> {
           Icon(
             Icons.search,
             size: 20,
-            color: widget.searchBarType == SearchBarType.normal
-                ? Color(0xffA9A9A9)
-                : Colors.blue,
+            color: Color(0xffA9A9A9),
           ),
           Expanded(
               flex: 1,

@@ -11,6 +11,22 @@
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		56C355D2245775E9002CFDC0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C355D1245775E9002CFDC0 /* CoreTelephony.framework */; };
+		56C355D42457766A002CFDC0 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C355D324577601002CFDC0 /* libsqlite3.0.tbd */; };
+		56C355D6245776AB002CFDC0 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C355D524577696002CFDC0 /* libiconv.2.4.0.tbd */; };
+		56C355D8245776E4002CFDC0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C355D7245776D1002CFDC0 /* libc++.tbd */; };
+		56C355DA24577741002CFDC0 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C355D924577736002CFDC0 /* libz.1.2.5.tbd */; };
+		56C355E424578A86002CFDC0 /* bds_license.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355DD24578A86002CFDC0 /* bds_license.dat */; };
+		56C355E524578A86002CFDC0 /* bds_easr_basic_model.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355DE24578A86002CFDC0 /* bds_easr_basic_model.dat */; };
+		56C355E624578A86002CFDC0 /* bds_easr_mfe_cmvn.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355DF24578A86002CFDC0 /* bds_easr_mfe_cmvn.dat */; };
+		56C355E724578A86002CFDC0 /* bds_easr_mfe_dnn.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355E024578A86002CFDC0 /* bds_easr_mfe_dnn.dat */; };
+		56C355E824578A86002CFDC0 /* bds_easr_gramm.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355E124578A86002CFDC0 /* bds_easr_gramm.dat */; };
+		56C355E924578A86002CFDC0 /* bds_easr_wakeup_words.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355E224578A86002CFDC0 /* bds_easr_wakeup_words.dat */; };
+		56C355EA24578A86002CFDC0 /* bds_easr_dnn_wakeup_model.dat in Resources */ = {isa = PBXBuildFile; fileRef = 56C355E324578A86002CFDC0 /* bds_easr_dnn_wakeup_model.dat */; };
+		56C3560D24578AD6002CFDC0 /* BDSClientResources in Resources */ = {isa = PBXBuildFile; fileRef = 56C3560C24578AD6002CFDC0 /* BDSClientResources */; };
+		56C3561024578AF3002CFDC0 /* libBaiduSpeechSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C3560F24578AF3002CFDC0 /* libBaiduSpeechSDK.a */; };
+		56C3561524578C61002CFDC0 /* AsrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3561224578C61002CFDC0 /* AsrManager.m */; };
+		56C3561624578C61002CFDC0 /* AsrPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3561424578C61002CFDC0 /* AsrPlugin.m */; };
 		73A32C66401DBB7620D7CED3 /* libPods-Runner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 684014468E590B9E83C1DC0D /* libPods-Runner.a */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
 		9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -43,6 +59,27 @@
 		36DBDDF01A82549CC4EBDF2E /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
+		56C355D1245775E9002CFDC0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		56C355D324577601002CFDC0 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		56C355D524577696002CFDC0 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
+		56C355D7245776D1002CFDC0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		56C355D924577736002CFDC0 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		56C355DD24578A86002CFDC0 /* bds_license.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bds_license.dat; sourceTree = "<group>"; };
+		56C355DE24578A86002CFDC0 /* bds_easr_basic_model.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = bds_easr_basic_model.dat; sourceTree = "<group>"; };
+		56C355DF24578A86002CFDC0 /* bds_easr_mfe_cmvn.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bds_easr_mfe_cmvn.dat; sourceTree = "<group>"; };
+		56C355E024578A86002CFDC0 /* bds_easr_mfe_dnn.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = bds_easr_mfe_dnn.dat; sourceTree = "<group>"; };
+		56C355E124578A86002CFDC0 /* bds_easr_gramm.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bds_easr_gramm.dat; sourceTree = "<group>"; };
+		56C355E224578A86002CFDC0 /* bds_easr_wakeup_words.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = bds_easr_wakeup_words.dat; sourceTree = "<group>"; };
+		56C355E324578A86002CFDC0 /* bds_easr_dnn_wakeup_model.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = bds_easr_dnn_wakeup_model.dat; sourceTree = "<group>"; };
+		56C3560C24578AD6002CFDC0 /* BDSClientResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BDSClientResources; sourceTree = "<group>"; };
+		56C3560F24578AF3002CFDC0 /* libBaiduSpeechSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduSpeechSDK.a; sourceTree = "<group>"; };
+		56C3561124578C60002CFDC0 /* AsrManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsrManager.h; sourceTree = "<group>"; };
+		56C3561224578C61002CFDC0 /* AsrManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsrManager.m; sourceTree = "<group>"; };
+		56C3561324578C61002CFDC0 /* AsrPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsrPlugin.h; sourceTree = "<group>"; };
+		56C3561424578C61002CFDC0 /* AsrPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsrPlugin.m; sourceTree = "<group>"; };
+		56C3561824578F1F002CFDC0 /* BDSASRParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSASRParameters.h; sourceTree = "<group>"; };
+		56C3561924578F1F002CFDC0 /* BDSEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSEventManager.h; sourceTree = "<group>"; };
+		56C3561A24578F1F002CFDC0 /* BDSASRDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSASRDefines.h; sourceTree = "<group>"; };
 		684014468E590B9E83C1DC0D /* libPods-Runner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Runner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFCC692D78A781DC817878E /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -66,7 +103,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */,
+				56C355D8245776E4002CFDC0 /* libc++.tbd in Frameworks */,
+				56C355D42457766A002CFDC0 /* libsqlite3.0.tbd in Frameworks */,
+				56C355D2245775E9002CFDC0 /* CoreTelephony.framework in Frameworks */,
+				56C355D6245776AB002CFDC0 /* libiconv.2.4.0.tbd in Frameworks */,
+				56C3561024578AF3002CFDC0 /* libBaiduSpeechSDK.a in Frameworks */,
 				3B80C3941E831B6300D905FE /* App.framework in Frameworks */,
+				56C355DA24577741002CFDC0 /* libz.1.2.5.tbd in Frameworks */,
 				73A32C66401DBB7620D7CED3 /* libPods-Runner.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +117,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56C355BA24577473002CFDC0 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				56C355DB245789BD002CFDC0 /* ASRPlugin */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		56C355DB245789BD002CFDC0 /* ASRPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				56C3561724578F1F002CFDC0 /* Headers */,
+				56C3561124578C60002CFDC0 /* AsrManager.h */,
+				56C3561224578C61002CFDC0 /* AsrManager.m */,
+				56C3561324578C61002CFDC0 /* AsrPlugin.h */,
+				56C3561424578C61002CFDC0 /* AsrPlugin.m */,
+				56C3560E24578AF3002CFDC0 /* BDSClientLib */,
+				56C3560C24578AD6002CFDC0 /* BDSClientResources */,
+				56C355DC24578A86002CFDC0 /* BDSClientEASRResources */,
+			);
+			path = ASRPlugin;
+			sourceTree = "<group>";
+		};
+		56C355DC24578A86002CFDC0 /* BDSClientEASRResources */ = {
+			isa = PBXGroup;
+			children = (
+				56C355DD24578A86002CFDC0 /* bds_license.dat */,
+				56C355DE24578A86002CFDC0 /* bds_easr_basic_model.dat */,
+				56C355DF24578A86002CFDC0 /* bds_easr_mfe_cmvn.dat */,
+				56C355E024578A86002CFDC0 /* bds_easr_mfe_dnn.dat */,
+				56C355E124578A86002CFDC0 /* bds_easr_gramm.dat */,
+				56C355E224578A86002CFDC0 /* bds_easr_wakeup_words.dat */,
+				56C355E324578A86002CFDC0 /* bds_easr_dnn_wakeup_model.dat */,
+			);
+			path = BDSClientEASRResources;
+			sourceTree = "<group>";
+		};
+		56C3560E24578AF3002CFDC0 /* BDSClientLib */ = {
+			isa = PBXGroup;
+			children = (
+				56C3560F24578AF3002CFDC0 /* libBaiduSpeechSDK.a */,
+			);
+			path = BDSClientLib;
+			sourceTree = "<group>";
+		};
+		56C3561724578F1F002CFDC0 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				56C3561824578F1F002CFDC0 /* BDSASRParameters.h */,
+				56C3561924578F1F002CFDC0 /* BDSEventManager.h */,
+				56C3561A24578F1F002CFDC0 /* BDSASRDefines.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +188,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				56C355BA24577473002CFDC0 /* Plugin */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -133,6 +232,11 @@
 		CB465B73DBD6F426753231C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56C355D924577736002CFDC0 /* libz.1.2.5.tbd */,
+				56C355D7245776D1002CFDC0 /* libc++.tbd */,
+				56C355D524577696002CFDC0 /* libiconv.2.4.0.tbd */,
+				56C355D324577601002CFDC0 /* libsqlite3.0.tbd */,
+				56C355D1245775E9002CFDC0 /* CoreTelephony.framework */,
 				684014468E590B9E83C1DC0D /* libPods-Runner.a */,
 			);
 			name = Frameworks;
@@ -145,7 +249,6 @@
 				36DBDDF01A82549CC4EBDF2E /* Pods-Runner.release.xcconfig */,
 				882FBC743CE4C2ACB50D2246 /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -193,6 +296,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -213,8 +317,16 @@
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				56C355E624578A86002CFDC0 /* bds_easr_mfe_cmvn.dat in Resources */,
 				9740EEB41CF90195004384FC /* Debug.xcconfig in Resources */,
+				56C355E824578A86002CFDC0 /* bds_easr_gramm.dat in Resources */,
+				56C355EA24578A86002CFDC0 /* bds_easr_dnn_wakeup_model.dat in Resources */,
+				56C355E924578A86002CFDC0 /* bds_easr_wakeup_words.dat in Resources */,
+				56C355E524578A86002CFDC0 /* bds_easr_basic_model.dat in Resources */,
+				56C3560D24578AD6002CFDC0 /* BDSClientResources in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
+				56C355E724578A86002CFDC0 /* bds_easr_mfe_dnn.dat in Resources */,
+				56C355E424578A86002CFDC0 /* bds_license.dat in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +406,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C3561524578C61002CFDC0 /* AsrManager.m in Sources */,
+				56C3561624578C61002CFDC0 /* AsrPlugin.m in Sources */,
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
@@ -387,6 +501,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Plugin/BDSClientLib",
+					"$(PROJECT_DIR)/Plugin/ASRPlugin/BDSClientLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctrip.flutterCtrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,6 +628,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Plugin/BDSClientLib",
+					"$(PROJECT_DIR)/Plugin/ASRPlugin/BDSClientLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctrip.flutterCtrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,6 +653,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/Plugin/BDSClientLib",
+					"$(PROJECT_DIR)/Plugin/ASRPlugin/BDSClientLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctrip.flutterCtrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";

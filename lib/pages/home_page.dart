@@ -4,10 +4,14 @@ import 'package:flutter_ctrip/model/common_model.dart';
 import 'package:flutter_ctrip/model/grid_nav_model.dart';
 import 'package:flutter_ctrip/model/home_model.dart';
 import 'package:flutter_ctrip/model/sales_box_model.dart';
+import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/pages/speak_page.dart';
 import 'package:flutter_ctrip/plugin/square_swiper_pagination.dart';
+import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/grid_nav.dart';
 import 'package:flutter_ctrip/widget/local_nav.dart';
 import 'package:flutter_ctrip/widget/sales_box.dart';
+import 'package:flutter_ctrip/widget/search_bar.dart';
 import 'package:flutter_ctrip/widget/sub_nav.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -15,6 +19,7 @@ import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'dart:convert';
 
 const APPBAR_SCROLL_OFFSET = 100;
+const SEARCH_BAR_DEFAULT_TEXT = '目的地 | 酒店 | 景点 | 航班号';
 
 class HomePage extends StatefulWidget {
   @override
@@ -148,23 +153,58 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Opacity(
-              opacity: appBarAlpha,
-              child: Container(
-                height: 80,
-                decoration: BoxDecoration(color: Colors.white),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text('首页'),
-                  ),
-                ),
-              ),
-            ),
+            _appBar,
           ],
         ),
       ),
     );
+  }
+
+  Widget get _appBar {
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              //AppBar渐变遮罩背景
+              colors: [Color(0x66000000), Colors.transparent],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(14, 20, 0, 0),
+            height: 86.0,
+            decoration: BoxDecoration(
+              color: Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255),
+              boxShadow: [BoxShadow(
+                color: appBarAlpha == 1.0 ? Colors.black12 : Colors.transparent,
+                offset: Offset(2, 3),
+                blurRadius: 6,
+                spreadRadius: 0.6,
+              ),]
+            ),
+            child: SearchBar(
+              searchBarType: appBarAlpha > 0.2
+                  ? SearchBarType.homeLight
+                  : SearchBarType.home,
+              inputBoxClick: _jumpToSearch,
+              defaultText: SEARCH_BAR_DEFAULT_TEXT,
+              leftButtonClick: () {},
+              speakClick: _jumpToSpeak,
+            ),
+          ),
+        ),
+        Container(
+            height: appBarAlpha > 0.2 ? 0.5 : 0,
+            decoration: BoxDecoration(
+                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 0.5)]))
+      ],
+    );
+  }
+
+  _jumpToSpeak() {
+    NavigatorUtil.push(context, SpeakPage());
   }
 
   void _onScroll(offset) {
@@ -200,5 +240,17 @@ class _HomePageState extends State<HomePage> {
       });
     }
     return null;
+  }
+
+  void _jumpToSearch() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SearchPage(
+          hint: SEARCH_BAR_DEFAULT_TEXT,
+          hideLeft: false,
+        ),
+      ),
+    );
   }
 }

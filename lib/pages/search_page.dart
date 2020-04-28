@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/search_dao.dart';
 import 'package:flutter_ctrip/model/seach_model.dart';
+import 'package:flutter_ctrip/pages/speak_page.dart';
+import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
 
@@ -28,7 +30,7 @@ class SearchPage extends StatefulWidget {
   final String keyword;
   final String hint;
 
-  SearchPage({this.hideLeft = true, this.searchUrl = URL, this.keyword, this.hint="目的地|酒店|景点|航班号"});
+  SearchPage({this.hideLeft = true, this.searchUrl = URL, this.keyword, this.hint="目的地 | 酒店 | 景点 | 航班号"});
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -146,10 +148,14 @@ class _SearchPageState extends State<SearchPage> {
                   Navigator.pop(context);
                 },
                 onChanged: _onTextChange,
+                speakClick: _jumpToSpeak,
               )),
         )
       ],
     );
+  }
+  _jumpToSpeak() {
+    NavigatorUtil.push(context, SpeakPage());
   }
 
   _onTextChange(String text) {

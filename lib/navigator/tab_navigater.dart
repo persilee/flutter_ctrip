@@ -38,6 +38,8 @@ class _TabNavigatorState extends State<TabNavigator> {
             });
           },
           type: BottomNavigationBarType.fixed,
+          selectedFontSize: 12,
+
           items: [
             BottomNavigationBarItem(
               icon: Icon(

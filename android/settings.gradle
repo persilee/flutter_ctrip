@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':asr_plugin'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
