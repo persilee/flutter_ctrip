@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/pages/home_page.dart';
 import 'package:flutter_ctrip/pages/my_page.dart';
 import 'package:flutter_ctrip/pages/search_page.dart';
-import 'package:flutter_ctrip/pages/travel.dart';
+import 'package:flutter_ctrip/pages/travel_page.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -28,6 +28,7 @@ class _TabNavigatorState extends State<TabNavigator> {
           TravelPage(),
           MyPage(),
         ],
+        physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -39,7 +40,6 @@ class _TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           selectedFontSize: 12,
-
           items: [
             BottomNavigationBarItem(
               icon: Icon(
