@@ -63,6 +63,10 @@ flutter:
     - images/type_channelgs.png
     - images/type_channeltrain.png
     - images/type_cruise.png
+    - images/lvpai_search_tag.png
+    - images/lvpai_issue_sight.png
+    - images/lvpai_search_list.png
+    - images/lvpai_issue_position.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

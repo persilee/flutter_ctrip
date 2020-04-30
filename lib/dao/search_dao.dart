@@ -9,7 +9,6 @@ class SearchDao {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       Utf8Decoder utf8decoder = Utf8Decoder(); // fix 中文乱码
-      print(response.bodyBytes);
       var result = json.decode(utf8decoder.convert(response.bodyBytes));
       SearchModel model = SearchModel.fromJson(result);
       model.keyword = text;

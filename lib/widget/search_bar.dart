@@ -118,8 +118,7 @@ class _SearchBarState extends State<SearchBar> {
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
           color: inputBoxColor,
-          borderRadius: BorderRadius.circular(
-              widget.searchBarType == SearchBarType.normal ? 5 : 15)),
+          borderRadius: BorderRadius.circular(15)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -137,13 +136,13 @@ class _SearchBarState extends State<SearchBar> {
                       onChanged: _onChanged,
                       autofocus: true,
                       style: TextStyle(
-                          fontSize: 18.0,
+                          fontSize: 16.0,
                           color: Colors.black,
                           fontWeight: FontWeight.w300),
                       //输入文本的样式
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(4, 11, 4, 11),
+                        contentPadding: EdgeInsets.fromLTRB(4, 12, 4, 12),
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(
                           fontSize: 15,

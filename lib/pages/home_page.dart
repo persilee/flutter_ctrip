@@ -74,12 +74,12 @@ class _HomePageState extends State<HomePage> {
                   child: ListView(
                     children: <Widget>[
                       Container(
-                        height: 230,
+                        height: 262,
                         child: Stack(
 //                    overflow: Overflow.visible,
                           children: <Widget>[
                             Container(
-                              height: 182,
+                              height: 210,
                               child: Swiper(
                                 itemCount: bannerList.length,
                                 autoplay: true,
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Positioned(
-                              top: 158,
+                              top: 188,
                               child: Container(
                                 width: MediaQuery.of(context).size.width,
                                 padding: EdgeInsets.fromLTRB(14, 0, 14, 0),

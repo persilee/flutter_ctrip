@@ -148,7 +148,7 @@ class _TravelItem extends StatelessWidget {
           NavigatorUtil.push(
               context,WebView(
             url: item.article.urls[0].h5Url,
-            title: '详情',
+            title: '携程旅拍',
           ));
         }
       },
@@ -160,7 +160,7 @@ class _TravelItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _itemImage(),
+              _itemImage(context),
               Container(
                 padding: EdgeInsets.all(4),
                 child: Text(
@@ -178,7 +178,7 @@ class _TravelItem extends StatelessWidget {
     );
   }
 
-  _itemImage() {
+  _itemImage(BuildContext context) {
     return Stack(
       children: <Widget>[
         Image.network(item.article.images[0]?.dynamicUrl),
@@ -200,7 +200,7 @@ class _TravelItem extends StatelessWidget {
                         size: 12,
                       )),
                   LimitedBox(
-                    maxWidth: 130,
+                    maxWidth: MediaQuery.of(context).size.width / 2 - 66,
                     child: Text(
                       _poiName(),
                       maxLines: 1,
@@ -241,7 +241,7 @@ class _TravelItem extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.all(5),
-                width: 90,
+                width: 80,
                 child: Text(
                   item.article.author?.nickName,
                   maxLines: 1,
@@ -262,6 +262,8 @@ class _TravelItem extends StatelessWidget {
                 padding: EdgeInsets.only(left: 3),
                 child: Text(
                   item.article.likeCount.toString(),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 10),
                 ),
               )

@@ -11,9 +11,10 @@ class WebView extends StatefulWidget {
   final String title;
   final bool hideAppBar;
   final bool backForbid;
+  final bool hideHead;
 
   WebView({this.url, this.statusBarColor, this.title, this.hideAppBar,
-    this.backForbid = false});
+    this.backForbid = false, this.hideHead = false});
 
   @override
   _WebViewState createState() => _WebViewState();
@@ -115,7 +116,7 @@ class _WebViewState extends State<WebView> {
 
   _appBar(Color backgroundColor, Color backButtonColor) {
     if (widget.hideAppBar ?? false) {
-      return Container(
+      return  widget.hideHead ? Container(): Container(
         color: backgroundColor,
         height: 28,
         width: double.infinity,

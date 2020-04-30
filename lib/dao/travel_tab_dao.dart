@@ -12,7 +12,6 @@ class TravelTabDao {
     if (response.statusCode == 200) {
       Utf8Decoder utf8decoder = Utf8Decoder(); // fix 中文乱码
       var result = json.decode(utf8decoder.convert(response.bodyBytes));
-      print(result);
       return TravelTabModel.fromJson(result);
     } else {
       throw Exception('Failed to load travel_page.json');

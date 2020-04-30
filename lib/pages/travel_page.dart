@@ -3,7 +3,11 @@ import 'package:flutter_ctrip/dao/travel_params_dao.dart';
 import 'package:flutter_ctrip/dao/travel_tab_dao.dart';
 import 'package:flutter_ctrip/model/travel_params_model.dart';
 import 'package:flutter_ctrip/model/travel_tab_model.dart';
+import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/pages/travel_search_page.dart';
 import 'package:flutter_ctrip/pages/travel_tab_page.dart';
+import 'package:flutter_ctrip/util/navigator_util.dart';
+import 'package:flutter_ctrip/widget/search_bar.dart';
 
 class TravelPage extends StatefulWidget {
   @override
@@ -22,8 +26,23 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
       body: Column(
         children: <Widget>[
           Container(
+            padding: EdgeInsets.fromLTRB(8, 0, 6, 0),
+            decoration: BoxDecoration(
+              color: Colors.white
+            ),
+            child: SafeArea(
+              child: SearchBar(
+                searchBarType: SearchBarType.homeLight,
+                inputBoxClick: _jumpToSearch,
+                defaultText: '',
+                leftButtonClick: () {},
+                speakClick: () {},
+              ),
+            ),
+          ),
+          Container(
             color: Colors.white,
-            padding: EdgeInsets.fromLTRB(2, 30, 0, 0),
+            padding: EdgeInsets.only(left: 2),
             child: TabBar(
               controller: _controller,
               isScrollable: true,
@@ -50,8 +69,8 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
                 controller: _controller,
                 children: tabs.map((Groups tab) {
                   return TravelTabPage(
-                    travelUrl: travelParamsModel.url,
-                    params: travelParamsModel.params,
+                    travelUrl: travelParamsModel?.url,
+                    params: travelParamsModel?.params,
                     groupChannelCode: tab.code,
                   );
                 }).toList()),
@@ -64,6 +83,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   @override
   void initState() {
     _controller = TabController(length: 0, vsync: this);
+    _loadParams();
     TravelTabDao.fetch().then((TravelTabModel model) {
       _controller = TabController(
           length: model.district.groups.length,
@@ -75,7 +95,6 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
     }).catchError((e) {
       print(e);
     });
-    _loadParams();
     super.initState();
   }
 
@@ -83,6 +102,16 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _jumpToSearch() {
+    NavigatorUtil.push(
+      context,
+      TravelSearchPage(
+        hint: '',
+        hideLeft: false,
+      ),
+    );
   }
 
   void _loadParams() {
