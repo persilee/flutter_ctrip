@@ -3,7 +3,7 @@ import 'package:flutter_ctrip/dao/travel_params_dao.dart';
 import 'package:flutter_ctrip/dao/travel_tab_dao.dart';
 import 'package:flutter_ctrip/model/travel_params_model.dart';
 import 'package:flutter_ctrip/model/travel_tab_model.dart';
-import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/pages/speak_page.dart';
 import 'package:flutter_ctrip/pages/travel_search_page.dart';
 import 'package:flutter_ctrip/pages/travel_tab_page.dart';
 import 'package:flutter_ctrip/util/navigator_util.dart';
@@ -19,6 +19,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   List<Groups> tabs = [];
   TravelTabModel travelTabModel;
   TravelParamsModel travelParamsModel;
+  String defaultText = '试试搜\“花式过五一\”';
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
       body: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.fromLTRB(8, 0, 6, 0),
+            padding: EdgeInsets.fromLTRB(8, 8, 6, 0),
             decoration: BoxDecoration(
               color: Colors.white
             ),
@@ -34,9 +35,8 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
               child: SearchBar(
                 searchBarType: SearchBarType.homeLight,
                 inputBoxClick: _jumpToSearch,
-                defaultText: '',
-                leftButtonClick: () {},
-                speakClick: () {},
+                defaultText: defaultText,
+                speakClick: _jumpToSpeak,
               ),
             ),
           ),
@@ -47,8 +47,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
               controller: _controller,
               isScrollable: true,
               labelColor: Colors.black,
-              labelPadding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-//              unselectedLabelColor: Color(0xff2FCFBB),
+              labelPadding: EdgeInsets.fromLTRB(8, 6, 8, 0),
               indicatorColor: Color(0xff2FCFBB),
               indicatorPadding: EdgeInsets.all(6),
               indicatorSize: TabBarIndicatorSize.label,
@@ -104,11 +103,15 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  _jumpToSpeak() {
+    NavigatorUtil.push(context, SpeakPage(pageType: 'travel',));
+  }
+
   void _jumpToSearch() {
     NavigatorUtil.push(
       context,
       TravelSearchPage(
-        hint: '',
+        hint: defaultText,
         hideLeft: false,
       ),
     );

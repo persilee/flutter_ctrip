@@ -9,11 +9,16 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/pages/travel_search_page.dart';
 import 'package:flutter_ctrip/plugin/asr_manager.dart';
 import 'package:flutter_ctrip/util/navigator_util.dart';
 
 ///语音识别
 class SpeakPage extends StatefulWidget {
+  final String pageType;
+
+  SpeakPage({this.pageType = 'home'});
+
   @override
   _SpeakPageState createState() => _SpeakPageState();
 }
@@ -72,9 +77,14 @@ class _SpeakPageState extends State<SpeakPage>
           speakResult = text;
         });
         Navigator.pop(context);
-        NavigatorUtil.push(
+        widget.pageType == 'home'? NavigatorUtil.push(
             context,
             SearchPage(
+              keyword: speakResult,
+              hideLeft: false,
+            )) : NavigatorUtil.push(
+            context,
+            TravelSearchPage(
               keyword: speakResult,
               hideLeft: false,
             ));

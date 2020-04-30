@@ -23,7 +23,7 @@ class TravelSearchPage extends StatefulWidget {
       {this.hideLeft = true,
       this.searchUrl = URL,
       this.keyword,
-      this.hint = "目的地 | 酒店 | 景点 | 航班号"});
+      this.hint = "试试搜\“花式过五一\”"});
 
   @override
   _TravelSearchPageState createState() => _TravelSearchPageState();
@@ -54,8 +54,85 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          _appBar(),
           MediaQuery.removePadding(
+            context: context,
+            removeLeft: true,
+            removeRight: true,
+            child: _appBar(),
+          ),
+          _searItems(),
+        ],
+      ),
+    );
+  }
+
+  _appBar() {
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0x66000000), Colors.transparent],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Container(
+              padding: EdgeInsets.only(top: 30),
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: SearchBar(
+                hideLeft: widget.hideLeft,
+                hint: widget.hint,
+                leftButtonClick: () {
+                  Navigator.pop(context);
+                },
+                onChanged: _onTextChange,
+                speakClick: _jumpToSpeak,
+              )),
+        ),
+        Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Offstage(
+                offstage: _isHidden,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      padding: EdgeInsets.only(left: 12),
+                      child: Text(
+                        hotTitle,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      child: Wrap(
+                        spacing: 6,
+                        runSpacing: 0,
+                        children: _hotChip(context),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  _searItems() {
+    return _isHidden
+        ? MediaQuery.removePadding(
             removeTop: true,
             context: context,
             child: Expanded(
@@ -66,10 +143,8 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
                     return _item(position);
                   }),
             ),
-          ),
-        ],
-      ),
-    );
+          )
+        : Container();
   }
 
   _item(int position) {
@@ -135,7 +210,8 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+              border:
+                  Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,18 +243,21 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
       );
     } else if (items[position].resourceType == 'user') {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           NavigatorUtil.push(
               context,
               WebView(
                 title: items[position].title,
-                url: 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth='+ items[position].clientAuth +'&autoawaken=close&popup=close&isHideHeader=true&isHideNavBar=YES&navBarStyle=white',
+                url: 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth=' +
+                    items[position].clientAuth +
+                    '&autoawaken=close&popup=close&isHideHeader=true&isHideNavBar=YES&navBarStyle=white',
               ));
         },
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+              border:
+                  Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -225,18 +304,21 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
       );
     } else if (items[position].resourceType == 'hotword') {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           NavigatorUtil.push(
               context,
               WebView(
-                title: items[position].title,
-                url: 'https://m.ctrip.com/webapp/you/livestream/paipai/searchResult?districtId=0&userLat=-180&userLng=-180&keyword='+ items[position].title +'&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fyou%2Flivestream%2Fpaipai%2FsearchPage.html%3FdistrictId%3D-1%26locatedDistrictId%3D0%26userLat%3D-180%26userLng%3D-180%26isHideHeader%3Dtrue%26isHideNavBar%3DYES%26autoawaken%3Dclose%26popup%3Dclose%26navBarStyle%3Dwhite&navBarStyle=white',
+                title: items[position].name,
+                url: 'https://m.ctrip.com/webapp/you/livestream/paipai/searchResult?districtId=0&userLat=-180&userLng=-180&keyword=' +
+                    items[position].name +
+                    '&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fyou%2Flivestream%2Fpaipai%2FsearchPage.html%3FdistrictId%3D-1%26locatedDistrictId%3D0%26userLat%3D-180%26userLng%3D-180%26isHideHeader%3Dtrue%26isHideNavBar%3DYES%26autoawaken%3Dclose%26popup%3Dclose%26navBarStyle%3Dwhite&navBarStyle=white',
               ));
         },
         child: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+              border:
+                  Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -252,7 +334,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
                     padding: EdgeInsets.only(left: 6),
                   ),
                   Text(
-                    items[position].title,
+                    items[position].name,
                   ),
                 ],
               ),
@@ -266,7 +348,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
           NavigatorUtil.push(
               context,
               WebView(
-                title: items[position].title,
+                title: items[position].name,
                 url: items[position].h5Url,
               ));
         },
@@ -290,7 +372,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
                     padding: EdgeInsets.only(left: 6),
                   ),
                   Text(
-                    items[position].title,
+                    items[position].name,
                   ),
                 ],
               ),
@@ -299,64 +381,6 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
         ),
       );
     }
-  }
-
-  _appBar() {
-    return Column(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0x66000000), Colors.transparent],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-          child: Container(
-              padding: EdgeInsets.only(top: 30),
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: SearchBar(
-                hideLeft: widget.hideLeft,
-                defaultText: widget.keyword,
-                hint: widget.hint,
-                leftButtonClick: () {
-                  Navigator.pop(context);
-                },
-                onChanged: _onTextChange,
-                speakClick: _jumpToSpeak,
-              )),
-        ),
-        Offstage(
-          offstage: _isHidden,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-                child: Text(
-                  hotTitle,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(8, 0, 6, 0),
-                child: Wrap(
-                  spacing: 6,
-                  runSpacing: 0,
-                  children: _hotChip(context),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
   }
 
   List<Widget> _hotChip(BuildContext context) {
@@ -414,7 +438,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
   }
 
   _jumpToSpeak() {
-    NavigatorUtil.push(context, SpeakPage());
+    NavigatorUtil.push(context, SpeakPage(pageType: 'travel',));
   }
 
   _onTextChange(String text) {

@@ -114,11 +114,11 @@ class _SearchBarState extends State<SearchBar> {
       inputBoxColor = Color(int.parse('0xffEDEDED'));
     }
     return Container(
-      height: 30,
+      height: 34,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
           color: inputBoxColor,
-          borderRadius: BorderRadius.circular(15)),
+          borderRadius: BorderRadius.circular(17)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -142,18 +142,19 @@ class _SearchBarState extends State<SearchBar> {
                       //输入文本的样式
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(4, 12, 4, 12),
+                        contentPadding: EdgeInsets.fromLTRB(4, 0, 4, 14),
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Microsoft Yahei',
+                          fontSize: 14,
+                          color: Colors.grey,
                         ),
                       ))
                   : _wrapTap(
                       Container(
+                        padding: EdgeInsets.only(left: 4),
                         child: Text(
                           widget.defaultText,
-                          style: TextStyle(fontSize: 13, color: Colors.grey),
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
                         ),
                       ),
                       widget.inputBoxClick)),
