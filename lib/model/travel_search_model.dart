@@ -113,6 +113,7 @@ class Items {
   String wxUrl;
   String mainWxUrl;
   String imageUrl;
+  String clientAuth;
   int followCount;
   int articleCount;
 
@@ -127,6 +128,7 @@ class Items {
         this.mainWxUrl,
         this.followCount,
         this.imageUrl,
+        this.clientAuth,
         this.articleCount});
 
   Items.fromJson(Map<String, dynamic> json) {
@@ -139,6 +141,7 @@ class Items {
     wxUrl = json['wxUrl'];
     mainWxUrl = json['mainWxUrl'];
     imageUrl = json['imageUrl'];
+    clientAuth = json['clientAuth'];
     followCount = json['followCount'];
     articleCount = json['articleCount'];
   }
@@ -154,6 +157,7 @@ class Items {
     data['wxUrl'] = this.wxUrl;
     data['mainWxUrl'] = this.mainWxUrl;
     data['followCount'] = this.followCount;
+    data['clientAuth'] = this.clientAuth;
     data['imageUrl'] = this.imageUrl;
     data['articleCount'] = this.articleCount;
     return data;

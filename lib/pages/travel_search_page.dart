@@ -9,13 +9,7 @@ import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
 
-const TYPES = [
-  'topic',
-  'place',
-  'user',
-  'hotword',
-  'district'
-];
+const TYPES = ['topic', 'place', 'user', 'hotword', 'district'];
 const URL =
     'https://m.ctrip.com/restapi/soa2/16189/json/appSuggest?_fxpcqlniredt=09031043410934928682&__gw_appid=99999999&__gw_ver=1.0&__gw_from=10650016495&__gw_platform=H5';
 
@@ -79,183 +73,229 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
   }
 
   _item(int position) {
-    print(items.length);
     if (items == null) return null;
     if (items[position].resourceType == 'topic') {
-      print('topic');
-      return Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  'images/lvpai_search_tag.png',
-                  width: 16,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 6),
-                ),
-                Text(
-                  '#',
-                  style: TextStyle(fontSize: 16),
-                ),
-                _title(items[position].name),
-              ],
-            ),
-            Text(
-              items[position].articleCount.toString() + '篇旅拍',
-              style: TextStyle(
-                fontFamily: '',
-                fontWeight: FontWeight.w300,
-                color: Colors.grey,
+      return GestureDetector(
+        onTap: () {
+          NavigatorUtil.push(
+              context,
+              WebView(
+                title: items[position].name,
+                url: items[position].h5Url,
+              ));
+        },
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              border:
+                  Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'images/lvpai_search_tag.png',
+                    width: 16,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 6),
+                  ),
+                  Text(
+                    '#',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  _title(items[position].name),
+                ],
               ),
-            ),
-          ],
+              Text(
+                items[position].articleCount.toString() + '篇旅拍',
+                style: TextStyle(
+                  fontFamily: '',
+                  fontWeight: FontWeight.w300,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
         ),
       );
     } else if (items[position].resourceType == 'sight') {
-      print('sight');
-      return Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  'images/lvpai_issue_sight.png',
-                  width: 16,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 6),
-                ),
-                _title(items[position].name),
-              ],
-            ),
-            Text(
-              items[position].articleCount.toString() + '篇旅拍',
-              style: TextStyle(
-                fontFamily: '',
-                fontWeight: FontWeight.w300,
-                color: Colors.grey,
+      return GestureDetector(
+        onTap: () {
+          NavigatorUtil.push(
+              context,
+              WebView(
+                title: items[position].name,
+                url: items[position].h5Url,
+              ));
+        },
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'images/lvpai_issue_sight.png',
+                    width: 16,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 6),
+                  ),
+                  _title(items[position].name),
+                ],
               ),
-            ),
-          ],
+              Text(
+                items[position].articleCount.toString() + '篇旅拍',
+                style: TextStyle(
+                  fontFamily: '',
+                  fontWeight: FontWeight.w300,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
         ),
       );
     } else if (items[position].resourceType == 'user') {
-      print('user');
-      return Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            CircleAvatar(
-              backgroundImage: NetworkImage(items[position].imageUrl),
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(items[position].title),
-                Row(
-                  children: <Widget>[
-                    Text(
-                      items[position].articleCount.toString() + '篇旅拍',
-                      style: TextStyle(
-                          fontFamily: '',
-                          fontSize: 12,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w300),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      items[position].followCount.toString() + '粉丝',
-                      style: TextStyle(
-                          fontFamily: '',
-                          fontSize: 12,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+      return GestureDetector(
+        onTap: (){
+          NavigatorUtil.push(
+              context,
+              WebView(
+                title: items[position].title,
+                url: 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth='+ items[position].clientAuth +'&autoawaken=close&popup=close&isHideHeader=true&isHideNavBar=YES&navBarStyle=white',
+              ));
+        },
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: NetworkImage(items[position].imageUrl),
+              ),
+              SizedBox(
+                width: 8,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(items[position].title),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        items[position].articleCount.toString() + '篇旅拍',
+                        style: TextStyle(
+                            fontFamily: '',
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w300),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        items[position].followCount.toString() + '粉丝',
+                        style: TextStyle(
+                            fontFamily: '',
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
     } else if (items[position].resourceType == 'hotword') {
-      print('hotword');
-      return Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  'images/lvpai_search_list.png',
-                  width: 16,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 6),
-                ),
-                Text(
-                  items[position].title,
-                ),
-              ],
-            ),
-          ],
+      return GestureDetector(
+        onTap: (){
+          NavigatorUtil.push(
+              context,
+              WebView(
+                title: items[position].title,
+                url: 'https://m.ctrip.com/webapp/you/livestream/paipai/searchResult?districtId=0&userLat=-180&userLng=-180&keyword='+ items[position].title +'&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fyou%2Flivestream%2Fpaipai%2FsearchPage.html%3FdistrictId%3D-1%26locatedDistrictId%3D0%26userLat%3D-180%26userLng%3D-180%26isHideHeader%3Dtrue%26isHideNavBar%3DYES%26autoawaken%3Dclose%26popup%3Dclose%26navBarStyle%3Dwhite&navBarStyle=white',
+              ));
+        },
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'images/lvpai_search_list.png',
+                    width: 16,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 6),
+                  ),
+                  Text(
+                    items[position].title,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
-    }else if (items[position].resourceType == 'district') {
-      print('district');
-      return Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  'images/lvpai_issue_position.png',
-                  width: 16,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 6),
-                ),
-                Text(
-                  items[position].title,
-                ),
-              ],
-            ),
-          ],
+    } else if (items[position].resourceType == 'district') {
+      return GestureDetector(
+        onTap: () {
+          NavigatorUtil.push(
+              context,
+              WebView(
+                title: items[position].title,
+                url: items[position].h5Url,
+              ));
+        },
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              border:
+                  Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'images/lvpai_issue_position.png',
+                    width: 16,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 6),
+                  ),
+                  Text(
+                    items[position].title,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -389,7 +429,6 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     }
     TravelSearchDao.fetch(widget.searchUrl, text)
         .then((TravelSearchModel model) {
-      print(model.toJson());
       setState(() {
         travelSearchModel = model;
       });
