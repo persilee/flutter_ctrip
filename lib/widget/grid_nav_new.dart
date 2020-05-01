@@ -19,7 +19,7 @@ class _GridNavNewState extends State<GridNavNew> {
         child: Column(
           children: <Widget>[
             Container(
-              height: 66,
+              height: 72,
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color(0xfffa5956),
@@ -166,7 +166,7 @@ class _GridNavNewState extends State<GridNavNew> {
               padding: EdgeInsets.only(top: 1),
             ),
             Container(
-              height: 66,
+              height: 72,
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color(0xff4b8fed),
@@ -306,7 +306,7 @@ class _GridNavNewState extends State<GridNavNew> {
               padding: EdgeInsets.only(top: 1),
             ),
             Container(
-              height: 66,
+              height: 72,
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color(0xff34c2aa),
