@@ -16,7 +16,6 @@ import 'package:flutter_ctrip/widget/sub_nav.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
-import 'dart:convert';
 
 const APPBAR_SCROLL_OFFSET = 100;
 const SEARCH_BAR_DEFAULT_TEXT = '目的地 | 酒店 | 景点 | 航班号';

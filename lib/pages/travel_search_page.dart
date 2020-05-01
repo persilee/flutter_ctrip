@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/trave_search_dao.dart';
 import 'package:flutter_ctrip/dao/trave_search_hot_dao.dart';
-import 'package:flutter_ctrip/model/seach_model.dart';
 import 'package:flutter_ctrip/model/travel_search_hot_model.dart';
 import 'package:flutter_ctrip/model/travel_search_model.dart';
 import 'package:flutter_ctrip/pages/speak_page.dart';

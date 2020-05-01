@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/pages/home_page.dart';
 import 'package:flutter_ctrip/pages/my_page.dart';
 import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/pages/test_page.dart';
 import 'package:flutter_ctrip/pages/travel_page.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -10,8 +11,8 @@ class TabNavigator extends StatefulWidget {
 }
 
 class _TabNavigatorState extends State<TabNavigator> {
-  final _defaultColor = Colors.grey;
-  final _activeColor = Colors.blue;
+  final _defaultColor = Color(0xff8a8a8a);
+  final _activeColor = Color(0xff50b4ed);
   int _currentIndex = 0;
   final PageController _controller = PageController(
     initialPage: 0,
@@ -42,14 +43,8 @@ class _TabNavigatorState extends State<TabNavigator> {
           selectedFontSize: 12,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: _defaultColor,
-              ),
-              activeIcon: Icon(
-                Icons.home,
-                color: _activeColor,
-              ),
+              icon: Image.asset('images/xiecheng.png',width: 22,height: 22,),
+              activeIcon: Image.asset('images/xiecheng_active.png',width: 22,height: 22,),
               title: Text(
                 '首页',
                 style: TextStyle(
@@ -58,30 +53,18 @@ class _TabNavigatorState extends State<TabNavigator> {
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                color: _defaultColor,
-              ),
-              activeIcon: Icon(
-                Icons.search,
-                color: _activeColor,
-              ),
+              icon: Image.asset('images/mude.png',width: 24,height: 24,),
+              activeIcon: Image.asset('images/mude_active.png',width: 24,height: 24,),
               title: Text(
-                '搜索',
+                '目的地',
                 style: TextStyle(
                   color: _currentIndex != 1 ? _defaultColor : _activeColor,
                 ),
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.camera_alt,
-                color: _defaultColor,
-              ),
-              activeIcon: Icon(
-                Icons.camera_alt,
-                color: _activeColor,
-              ),
+              icon: Image.asset('images/lvpai.png',width: 23,height: 23,),
+              activeIcon: Image.asset('images/lvpai_active.png',width: 23,height: 23,),
               title: Text(
                 '旅拍',
                 style: TextStyle(
@@ -90,14 +73,8 @@ class _TabNavigatorState extends State<TabNavigator> {
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_circle,
-                color: _defaultColor,
-              ),
-              activeIcon: Icon(
-                Icons.account_circle,
-                color: _activeColor,
-              ),
+              icon: Image.asset('images/wode.png',width: 23,height: 23,),
+              activeIcon: Image.asset('images/wode_active.png',width: 23,height: 23,),
               title: Text(
                 '我的',
                 style: TextStyle(

@@ -67,6 +67,17 @@ flutter:
     - images/lvpai_issue_sight.png
     - images/lvpai_search_list.png
     - images/lvpai_issue_position.png
+    - images/user1.png
+    - images/xiaoxi_white.png
+    - images/xiecheng.png
+    - images/xiecheng_active.png
+    - images/xiaoxi_grey.png
+    - images/mude.png
+    - images/mude_active.png
+    - images/lvpai.png
+    - images/lvpai_active.png
+    - images/wode.png
+    - images/wode_active.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/model/travel_hot_keyword_model.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 enum SearchBarType { home, normal, homeLight }
 
 class SearchBar extends StatefulWidget {
   final bool enabled;
   final bool hideLeft;
+  final bool isUserIcon;
   final SearchBarType searchBarType;
   final String hint;
   final String defaultText;
@@ -13,10 +16,12 @@ class SearchBar extends StatefulWidget {
   final void Function() speakClick;
   final void Function() inputBoxClick;
   final ValueChanged<String> onChanged;
+  final List<HotKeyword> hintList;
 
   const SearchBar(
       {Key key,
       this.enabled = true,
+      this.isUserIcon: false,
       this.hideLeft,
       this.searchBarType = SearchBarType.normal,
       this.hint,
@@ -25,7 +30,8 @@ class SearchBar extends StatefulWidget {
       this.rightButtonClick,
       this.speakClick,
       this.inputBoxClick,
-      this.onChanged})
+      this.onChanged,
+      this.hintList})
       : super(key: key);
 
   @override
@@ -86,6 +92,12 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   _genHomeSearch() {
+    String sMessage;
+    if (widget.searchBarType == SearchBarType.home) {
+      sMessage = 'images/xiaoxi_white.png';
+    } else {
+      sMessage = 'images/xiaoxi_grey.png';
+    }
     return Container(
       child: Row(children: <Widget>[
         Expanded(
@@ -93,14 +105,23 @@ class _SearchBarState extends State<SearchBar> {
           child: _inputBox(),
         ),
         _wrapTap(
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-              child: Icon(
-                Icons.comment,
-                color: _homeFontColor(),
-                size: 26,
-              ),
-            ),
+            widget.isUserIcon
+                ? Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    child: Image.asset(
+                      'images/user1.png',
+                      height: 24,
+                      width: 24,
+                    ),
+                  )
+                : Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    child: Image.asset(
+                      sMessage,
+                      height: 24,
+                      width: 24,
+                    ),
+                  ),
             widget.rightButtonClick)
       ]),
     );
@@ -117,8 +138,7 @@ class _SearchBarState extends State<SearchBar> {
       height: 34,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
-          color: inputBoxColor,
-          borderRadius: BorderRadius.circular(17)),
+          color: inputBoxColor, borderRadius: BorderRadius.circular(17)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -150,13 +170,35 @@ class _SearchBarState extends State<SearchBar> {
                         ),
                       ))
                   : _wrapTap(
-                      Container(
-                        padding: EdgeInsets.only(left: 4),
-                        child: Text(
-                          widget.defaultText,
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                      ),
+                      widget.hintList != null
+                          ? Swiper(
+                              scrollDirection: Axis.vertical,
+                              itemCount: widget.hintList?.length,
+                              autoplay: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              autoplayDelay: 3000,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  padding: EdgeInsets.fromLTRB(4, 7, 0, 0),
+                                  child: Text(
+                                    widget.hintList[index].prefix +
+                                        "\“" +
+                                        widget.hintList[index].content +
+                                        "\”",
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.grey),
+                                  ),
+                                );
+                              },
+                            )
+                          : Container(
+                              padding: EdgeInsets.only(left: 4),
+                              child: Text(
+                                widget.defaultText,
+                                style:
+                                    TextStyle(fontSize: 14, color: Colors.grey),
+                              ),
+                            ),
                       widget.inputBoxClick)),
           !showClear
               ? _wrapTap(

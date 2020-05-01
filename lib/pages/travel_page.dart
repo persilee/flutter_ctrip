@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/dao/trave_hot_keyword_dao.dart';
 import 'package:flutter_ctrip/dao/travel_params_dao.dart';
 import 'package:flutter_ctrip/dao/travel_tab_dao.dart';
+import 'package:flutter_ctrip/model/travel_hot_keyword_model.dart';
 import 'package:flutter_ctrip/model/travel_params_model.dart';
 import 'package:flutter_ctrip/model/travel_tab_model.dart';
 import 'package:flutter_ctrip/pages/speak_page.dart';
@@ -19,6 +21,8 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   List<Groups> tabs = [];
   TravelTabModel travelTabModel;
   TravelParamsModel travelParamsModel;
+  TravelHotKeywordModel travelHotKeywordModel;
+  List<HotKeyword> hotKeyWords;
   String defaultText = '试试搜\“花式过五一\”';
 
   @override
@@ -37,6 +41,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
                 inputBoxClick: _jumpToSearch,
                 defaultText: defaultText,
                 speakClick: _jumpToSpeak,
+                hintList: hotKeyWords,
               ),
             ),
           ),
@@ -70,7 +75,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
                   return TravelTabPage(
                     travelUrl: travelParamsModel?.url,
                     params: travelParamsModel?.params,
-                    groupChannelCode: tab.code,
+                    groupChannelCode: tab?.code,
                   );
                 }).toList()),
           )),
@@ -83,17 +88,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
   void initState() {
     _controller = TabController(length: 0, vsync: this);
     _loadParams();
-    TravelTabDao.fetch().then((TravelTabModel model) {
-      _controller = TabController(
-          length: model.district.groups.length,
-          vsync: this); //fix tab label 空白问题
-      setState(() {
-        tabs = model.district.groups;
-        travelTabModel = model;
-      });
-    }).catchError((e) {
-      print(e);
-    });
+    _loadHotKeyword();
     super.initState();
   }
 
@@ -122,8 +117,32 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
       setState(() {
         travelParamsModel = model;
       });
+      _loadTab();
     }).catchError((e) {
       print(e);
     });
+  }
+
+  void _loadTab(){
+    TravelTabDao.fetch().then((TravelTabModel model) {
+      _controller = TabController(
+          length: model.district.groups.length,
+          vsync: this); //fix tab label 空白问题
+      setState(() {
+        tabs = model.district.groups;
+        travelTabModel = model;
+      });
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+  void _loadHotKeyword() {
+    TravelHotKeywordDao.fetch().then((TravelHotKeywordModel model){
+      setState(() {
+        travelHotKeywordModel = model;
+        hotKeyWords = travelHotKeywordModel.hotKeyword;
+      });
+    }).catchError((e) => print(e));
   }
 }
