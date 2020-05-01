@@ -143,11 +143,7 @@ class _SearchBarState extends State<SearchBar> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Icon(
-            Icons.search,
-            size: 20,
-            color: Color(0xffA9A9A9),
-          ),
+          Image.asset('images/sousuo.png',width: 17,),
           Expanded(
               flex: 1,
               child: widget.searchBarType == SearchBarType.normal
@@ -202,13 +198,7 @@ class _SearchBarState extends State<SearchBar> {
                       widget.inputBoxClick)),
           !showClear
               ? _wrapTap(
-                  Icon(
-                    Icons.mic,
-                    size: 22,
-                    color: widget.searchBarType == SearchBarType.normal
-                        ? Colors.blue
-                        : Colors.grey,
-                  ),
+                  Image.asset('images/yuyin.png',width: 17,),
                   widget.speakClick)
               : _wrapTap(
                   Icon(

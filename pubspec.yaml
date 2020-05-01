@@ -79,6 +79,15 @@ flutter:
     - images/lvpai_active.png
     - images/wode.png
     - images/wode_active.png
+    - images/grid-nav-items-jhj.png
+    - images/grid-nav-items-minsu.png
+    - images/grid-nav-items-hotel.png
+    - images/grid-nav-items-flight.png
+    - images/grid-nav-items-train.png
+    - images/grid-nav-items-travel.png
+    - images/grid-nav-items-dingzhi.png
+    - images/yuyin.png
+    - images/sousuo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

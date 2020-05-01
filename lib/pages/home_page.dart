@@ -9,6 +9,7 @@ import 'package:flutter_ctrip/pages/speak_page.dart';
 import 'package:flutter_ctrip/plugin/square_swiper_pagination.dart';
 import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/grid_nav.dart';
+import 'package:flutter_ctrip/widget/grid_nav_new.dart';
 import 'package:flutter_ctrip/widget/local_nav.dart';
 import 'package:flutter_ctrip/widget/sales_box.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
@@ -84,8 +85,10 @@ class _HomePageState extends State<HomePage> {
                                 autoplay: true,
                                 pagination: SwiperPagination(
                                     builder: SquareSwiperPagination(
-                                      size: 7,
-                                      activeSize: 7,
+                                      size: 6,
+                                      activeSize: 6,
+                                      color: Colors.white.withAlpha(80),
+                                      activeColor: Colors.white,
                                     ),
                                   alignment: Alignment.bottomRight,
                                   margin: EdgeInsets.fromLTRB(0, 0, 14, 28),
@@ -129,9 +132,10 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.only(top: 10),
                         child: Column(
                           children: <Widget>[
-                            GridNav(
-                              gridNavModel: gridNavModel,
-                            ),
+//                            GridNav(
+//                              gridNavModel: gridNavModel,
+//                            ),
+                            GridNavNew(),
                             Padding(
                               padding: EdgeInsets.only(top: 10),
                             ),

@@ -72,7 +72,7 @@ class SquareSwiperPagination extends SwiperPlugin {
             borderRadius: BorderRadius.circular(size/2),
             color: active ? activeColor : color,
           ),
-          width: active ? activeSize * 3 : size,
+          width: active ? activeSize * 2 : size,
           height: active ? activeSize : size,
         ),
       ));
