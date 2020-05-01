@@ -10,6 +10,7 @@ import 'package:flutter_ctrip/pages/travel_search_page.dart';
 import 'package:flutter_ctrip/pages/travel_tab_page.dart';
 import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
+import 'package:flutter_ctrip/widget/webview.dart';
 
 class TravelPage extends StatefulWidget {
   @override
@@ -42,6 +43,8 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
                 defaultText: defaultText,
                 speakClick: _jumpToSpeak,
                 hintList: hotKeyWords,
+                isUserIcon: true,
+                rightButtonClick: _jumpToUser,
               ),
             ),
           ),
@@ -108,6 +111,18 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
       TravelSearchPage(
         hint: defaultText,
         hideLeft: false,
+      ),
+    );
+  }
+
+  void _jumpToUser() {
+    NavigatorUtil.push(
+      context,
+      WebView(
+        url: 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white',
+        hideHead: false,
+        hideAppBar: false,
+        title: '我的旅拍',
       ),
     );
   }

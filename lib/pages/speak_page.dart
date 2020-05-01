@@ -75,6 +75,7 @@ class _SpeakPageState extends State<SpeakPage>
       if (text != null && text.length > 0) {
         setState(() {
           speakResult = text;
+          if(speakResult.endsWith('，')) speakResult = speakResult.substring(0,speakResult.length-1);
         });
         Navigator.pop(context);
         widget.pageType == 'home'? NavigatorUtil.push(
@@ -88,7 +89,6 @@ class _SpeakPageState extends State<SpeakPage>
               keyword: speakResult,
               hideLeft: false,
             ));
-        print("----------" + text);
       }
     }).catchError((e) {
       print("----------" + e.toString());

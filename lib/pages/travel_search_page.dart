@@ -85,6 +85,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
               child: SearchBar(
                 hideLeft: widget.hideLeft,
                 hint: widget.hint,
+                defaultText: widget.keyword,
                 leftButtonClick: () {
                   Navigator.pop(context);
                 },

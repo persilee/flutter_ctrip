@@ -191,6 +191,7 @@ class _HomePageState extends State<HomePage> {
               defaultText: SEARCH_BAR_DEFAULT_TEXT,
               leftButtonClick: () {},
               speakClick: _jumpToSpeak,
+              rightButtonClick: _jumpToUser,
             ),
           ),
         ),
@@ -249,6 +250,18 @@ class _HomePageState extends State<HomePage> {
           hint: SEARCH_BAR_DEFAULT_TEXT,
           hideLeft: false,
         ),
+      ),
+    );
+  }
+
+  void _jumpToUser() {
+    NavigatorUtil.push(
+      context,
+      WebView(
+        url: 'https://m.ctrip.com/webapp/servicechatv2/messagelist/?from=%2Fwebapp%2Fmyctrip%2Findex',
+        hideHead: false,
+        hideAppBar: false,
+        title: '我的消息',
       ),
     );
   }

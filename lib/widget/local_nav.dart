@@ -55,8 +55,8 @@ class LocalNav extends StatelessWidget {
         children: <Widget>[
           Image.network(
             model.icon,
-            width: 32,
-            height: 32,
+            width: 40,
+            height: 40,
           ),
           Text(
             model.title,

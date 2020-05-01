@@ -90,6 +90,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.0"
+  flutter_statusbar:
+    dependency: "direct main"
+    description:
+      name: flutter_statusbar
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.1"
   flutter_swiper:
     dependency: "direct main"
     description:

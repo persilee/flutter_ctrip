@@ -1,5 +1,6 @@
 import 'dart:async';
-
+import 'package:flutter/services.dart';
+import 'package:flutter_statusbar/flutter_statusbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
@@ -26,10 +27,21 @@ class _WebViewState extends State<WebView> {
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   StreamSubscription<WebViewHttpError> _onHttpError;
   bool exiting = false;
+  double _height;
+
+  initPlatformState() async {
+    try {
+      _height = await FlutterStatusbar.height;
+    } on PlatformException {}
+    if (!mounted) return;
+    setState(() {
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    initPlatformState();
     webViewReference.close();
     _onUrlChanged = webViewReference.onUrlChanged.listen((String url) {
 
@@ -118,14 +130,14 @@ class _WebViewState extends State<WebView> {
     if (widget.hideAppBar ?? false) {
       return  widget.hideHead ? Container(): Container(
         color: backgroundColor,
-        height: 28,
+        height: _height??30,
         width: double.infinity,
       );
     }
 
     return Container(
       color: backgroundColor,
-      padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
+      padding: EdgeInsets.fromLTRB(0, 38, 0, 10),
       child: FractionallySizedBox(
         widthFactor: 1,
         child: Stack(
@@ -139,7 +151,7 @@ class _WebViewState extends State<WebView> {
                 child: Icon(
                   Icons.close,
                   color: backButtonColor,
-                  size: 26,
+                  size: 24,
                 ),
               ),
             ),
@@ -149,7 +161,7 @@ class _WebViewState extends State<WebView> {
               child: Center(
                 child: Text(
                   widget.title ?? '',
-                  style: TextStyle(color: backButtonColor, fontSize: 20),
+                  style: TextStyle(color: backButtonColor, fontSize: 18),
                 ),
               ),
             )

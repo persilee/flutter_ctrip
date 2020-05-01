@@ -109,7 +109,7 @@ class SalesBox extends StatelessWidget {
           );
         },
         child: Container(
-          height: big?144:89,
+          height: big?128:80,
           margin: left?EdgeInsets.only(right: 4):EdgeInsets.zero,
           decoration: BoxDecoration(
             color: Colors.white,
