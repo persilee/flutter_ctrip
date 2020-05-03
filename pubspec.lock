@@ -247,6 +247,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.8"
+  vertical_tabs:
+    dependency: "direct main"
+    description:
+      name: vertical_tabs
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.0"
   xml:
     dependency: transitive
     description:

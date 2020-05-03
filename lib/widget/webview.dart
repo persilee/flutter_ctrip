@@ -127,7 +127,6 @@ class _WebViewState extends State<WebView> {
   }
 
   _appBar(Color backgroundColor, Color backButtonColor) {
-    print('----------------------------$_height');
     if (widget.hideAppBar ?? false) {
       return  widget.hideHead ? Container(): Container(
         color: backgroundColor,

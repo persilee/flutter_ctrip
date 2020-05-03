@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/pages/destination_page.dart';
 import 'package:flutter_ctrip/pages/home_page.dart';
 import 'package:flutter_ctrip/pages/my_page.dart';
-import 'package:flutter_ctrip/pages/search_page.dart';
-import 'package:flutter_ctrip/pages/test_page.dart';
 import 'package:flutter_ctrip/pages/travel_page.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -25,7 +24,7 @@ class _TabNavigatorState extends State<TabNavigator> {
         controller: _controller,
         children: <Widget>[
           HomePage(),
-          SearchPage(),
+          DestinationPage(),
           TravelPage(),
           MyPage(),
         ],
