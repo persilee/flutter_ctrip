@@ -35,668 +35,23 @@ class _DestinationPageState extends State<DestinationPage> {
         isLoading: _isLoading,
         child: Stack(
           children: <Widget>[
-//            Container(
-//              margin: EdgeInsets.only(top: 90),
-//              child: VerticalTabView(
-//                tabsWidth: 88,
-//                tabsElevation: 0,
-//                indicatorWidth: 0,
-//                selectedTabBackgroundColor: Colors.white,
-//                backgroundColor: Colors.white,
-//                tabTextStyle: TextStyle(
-//                  height: 60,
-//                  color: Color(0xff333333),
-//                ),
-//                tabs: tabs,
-//                contents: tabPages,
-//              ),
-//            ),
-
             Container(
-              margin: EdgeInsets.only(top: 98),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    color: Colors.grey,
-                    width: 88,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: MediaQuery.removePadding(
-                      removeTop: true,
-                      context: context,
-                      child: ListView(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(top: 10),
-                            padding: EdgeInsets.only(right: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
-                                  child: Text(
-                                    '当季热门',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.black87),
-                                  ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 8, 0, 0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                PhysicalModel(
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  color: Colors.transparent,
-                                                  elevation: 5,
-                                                  child: Container(
-                                                    child: Image.network(
-                                                      'https://dimg02.c-ctrip.com/images/100110000000qfs9mE3E1_C_250_250.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      0, 4, 0, 4),
-                                                  child: Text(
-                                                    '日本',
-                                                    style: TextStyle(
-                                                        color: Color(0xff333333)
-                                                            .withAlpha(200)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 8, 0, 0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                PhysicalModel(
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  color: Colors.transparent,
-                                                  elevation: 5,
-                                                  child: Container(
-                                                    child: Image.network(
-                                                      'https://dimg02.c-ctrip.com/images/100110000000qfs9mE3E1_C_250_250.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      0, 4, 0, 4),
-                                                  child: Text(
-                                                    '日本',
-                                                    style: TextStyle(
-                                                        color: Color(0xff333333)
-                                                            .withAlpha(200)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 8, 0, 0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                PhysicalModel(
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  color: Colors.transparent,
-                                                  elevation: 5,
-                                                  child: Container(
-                                                    child: Image.network(
-                                                      'https://dimg02.c-ctrip.com/images/100110000000qfs9mE3E1_C_250_250.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      0, 4, 0, 4),
-                                                  child: Text(
-                                                    '日本',
-                                                    style: TextStyle(
-                                                        color: Color(0xff333333)
-                                                            .withAlpha(200)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 8, 0, 0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                PhysicalModel(
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  color: Colors.transparent,
-                                                  elevation: 5,
-                                                  child: Container(
-                                                    child: Image.network(
-                                                      'https://dimg02.c-ctrip.com/images/100110000000qfs9mE3E1_C_250_250.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      0, 4, 0, 4),
-                                                  child: Text(
-                                                    '日本',
-                                                    style: TextStyle(
-                                                        color: Color(0xff333333)
-                                                            .withAlpha(200)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 8, 0, 0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                PhysicalModel(
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  color: Colors.transparent,
-                                                  elevation: 5,
-                                                  child: Container(
-                                                    child: Image.network(
-                                                      'https://dimg02.c-ctrip.com/images/100110000000qfs9mE3E1_C_250_250.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      0, 4, 0, 4),
-                                                  child: Text(
-                                                    '日本',
-                                                    style: TextStyle(
-                                                        color: Color(0xff333333)
-                                                            .withAlpha(200)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 8, 0, 0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                PhysicalModel(
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  color: Colors.transparent,
-                                                  elevation: 5,
-                                                  child: Container(
-                                                    child: Image.network(
-                                                      'https://dimg02.c-ctrip.com/images/100110000000qfs9mE3E1_C_250_250.jpg',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      0, 4, 0, 4),
-                                                  child: Text(
-                                                    '日本',
-                                                    style: TextStyle(
-                                                        color: Color(0xff333333)
-                                                            .withAlpha(200)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
-                                  child: Text(
-                                    '周边经典目的地',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.black87),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(30),
-                                                        offset: Offset(1, 1),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 3),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '扬州',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(20),
-                                                        offset: Offset(0, 0),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 2),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '天目湖涵田半山温泉',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(30),
-                                                        offset: Offset(1, 1),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 3),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '舟山',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(30),
-                                                        offset: Offset(1, 1),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 3),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '扬州',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(20),
-                                                        offset: Offset(0, 0),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 2),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '天目湖涵田半山温泉',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(30),
-                                                        offset: Offset(1, 1),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 3),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '舟山',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(30),
-                                                        offset: Offset(1, 1),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 3),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '扬州',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(20),
-                                                        offset: Offset(0, 0),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 2),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '天目湖涵田半山温泉',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0, 0, 10, 10),
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xfff8f8f8),
-                                                  borderRadius:
-                                                  BorderRadius.circular(4),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withAlpha(30),
-                                                        offset: Offset(1, 1),
-                                                        spreadRadius: 1,
-                                                        blurRadius: 3),
-                                                  ]),
-                                              height: 36,
-                                              child: Text(
-                                                '舟山',
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Color(0xff333333)
-                                                        .withAlpha(220),
-                                                    fontSize: 13),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Offstage(
-                                        offstage: _isMore,
-                                        child: Column(
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                Expanded(
-                                                  child: Container(
-                                                    alignment: Alignment.center,
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0, 0, 10, 10),
-                                                    decoration: BoxDecoration(
-                                                        color: Color(0xfff8f8f8),
-                                                        borderRadius:
-                                                        BorderRadius.circular(4),
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                              color: Colors.black
-                                                                  .withAlpha(30),
-                                                              offset: Offset(1, 1),
-                                                              spreadRadius: 1,
-                                                              blurRadius: 3),
-                                                        ]),
-                                                    height: 36,
-                                                    child: Text(
-                                                      '横店影视城',
-                                                      overflow: TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                      textAlign: TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: Color(0xff333333)
-                                                              .withAlpha(220),
-                                                          fontSize: 13),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Container(),
-                                                ),
-                                                Expanded(
-                                                  child: Container(),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _isMore = !_isMore;
-                                            });
-                                          },
-                                          child: _isMore
-                                              ? Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      '展开',
-                                                      style: TextStyle(
-                                                          color: Colors.blue,
-                                                          fontFamily: ''),
-                                                    ),
-                                                    Icon(
-                                                      Icons.keyboard_arrow_down,
-                                                      color: Colors.blue,
-                                                      size: 16,
-                                                    ),
-                                                  ],
-                                                )
-                                              : Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      '收起',
-                                                      style: TextStyle(
-                                                          color: Colors.blue,
-                                                          fontFamily: ''),
-                                                    ),
-                                                    Icon(
-                                                      Icons.keyboard_arrow_up,
-                                                      color: Colors.blue,
-                                                      size: 16,
-                                                    ),
-                                                  ],
-                                                ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+              margin: EdgeInsets.only(top: 90),
+              child: VerticalTabView(
+                tabsWidth: 88,
+                tabsElevation: 0,
+                indicatorWidth: 0,
+                selectedTabBackgroundColor: Colors.white,
+                backgroundColor: Colors.white,
+                tabTextStyle: TextStyle(
+                  height: 60,
+                  color: Color(0xff333333),
+                ),
+                tabs: tabs,
+                contents: tabPages,
               ),
             ),
+
 
             Container(
               padding: EdgeInsets.fromLTRB(8, 10, 6, 14),
@@ -826,82 +181,118 @@ class _DestinationPageState extends State<DestinationPage> {
             //当标签数量小于9个时，放到可以显示的容器
             if (k < 9) {
               visibleSpans.add(
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-                  decoration: BoxDecoration(
-                      color: Color(0xfff8f8f8),
-                      borderRadius: BorderRadius.circular(4),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withAlpha(30),
-                            offset: Offset(1, 1),
-                            spreadRadius: 1,
-                            blurRadius: 3),
-                      ]),
-                  width: 80,
-                  height: 36,
-                  child: Text(
-                    navigationList[i].destAreaList[j].child[k].text,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color(0xff333333).withAlpha(220), fontSize: 13),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
+                    decoration: BoxDecoration(
+                        color: Color(0xfff8f8f8),
+                        borderRadius: BorderRadius.circular(4),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withAlpha(30),
+                              offset: Offset(1, 1),
+                              spreadRadius: 1,
+                              blurRadius: 3),
+                        ]),
+                    height: 36,
+                    child: Text(
+                      navigationList[i].destAreaList[j].child[k].text,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Color(0xff333333).withAlpha(220), fontSize: 13),
+                    ),
                   ),
                 ),
               );
             } else if (k >= 9) {
               unVisibleSpans.add(
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-                  decoration: BoxDecoration(
-                      color: Color(0xfff8f8f8),
-                      borderRadius: BorderRadius.circular(4),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withAlpha(30),
-                            offset: Offset(1, 1),
-                            spreadRadius: 1,
-                            blurRadius: 3),
-                      ]),
-                  width: 80,
-                  height: 36,
-                  child: Text(
-                    navigationList[i].destAreaList[j].child[k].text,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color(0xff333333).withAlpha(220), fontSize: 13),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
+                    decoration: BoxDecoration(
+                        color: Color(0xfff8f8f8),
+                        borderRadius: BorderRadius.circular(4),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withAlpha(30),
+                              offset: Offset(1, 1),
+                              spreadRadius: 1,
+                              blurRadius: 3),
+                        ]),
+                    height: 36,
+                    child: Text(
+                      navigationList[i].destAreaList[j].child[k].text,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Color(0xff333333).withAlpha(220), fontSize: 13),
+                    ),
                   ),
                 ),
               );
             }
           }
         }
-        if (visibleSpans.length > 0) {
-          spanContent.add(
-            Wrap(
-              children: visibleSpans,
-            ),
-          );
+        if (visibleSpans.length >= 9) {
+          spanContent.add(Row(
+            children: visibleSpans.sublist(0,3),
+          ));
+          spanContent.add(Row(
+            children: visibleSpans.sublist(3,6),
+          ));
+          spanContent.add(Row(
+            children: visibleSpans.sublist(6,9),
+          ));
+        }else if(visibleSpans.length > 0 && visibleSpans.length < 9){
+          if(visibleSpans.length % 3 ==1){
+            visibleSpans.add(Expanded(child: Container()));
+            visibleSpans.add(Expanded(child: Container()));
+          }else if(visibleSpans.length % 3 ==2){
+            visibleSpans.add(Expanded(child: Container()));
+          }
+          int vStart = 0;
+          for (var k = 0; k < visibleSpans.length; k++) {
+            if((k+1) % 3 == 0 && k != 0){
+              spanContent.add(Row(
+                children: visibleSpans.sublist(vStart,(k+1)),
+              ));
+              vStart = k + 1;
+            }
+          }
         }
-        if (unVisibleSpans.length > 0) {
+        int unStart = 0;
+        List<Widget> unVisibleSpanRows = [];
+        if (unVisibleSpans.length >= 9) {
+          if(unVisibleSpans.length % 3 == 1){
+            unVisibleSpans.add(Expanded(child: Container()));
+            unVisibleSpans.add(Expanded(child: Container()));
+          }else if(unVisibleSpans.length % 3 == 2){
+            unVisibleSpans.add(Expanded(child: Container()));
+          }
+          for (var k = 0; k < unVisibleSpans.length; k++) {
+            if((k+1) % 3 == 0 && k != 0){
+              unVisibleSpanRows.add(Row(
+                children: unVisibleSpans.sublist(unStart,(k+1)),
+              ));
+              unStart = k + 1;
+            }
+          }
           spanContent.add(Offstage(
             offstage: _isMore,
-            child: Wrap(
-              children: unVisibleSpans,
+            child: Column(
+              children: unVisibleSpanRows,
             ),
-          ));
+          ),);
           spanContent.add(
             Container(
               child: GestureDetector(
                 onTap: () {
-                  setState(() {
-                    _isMore = !_isMore;
-                  });
+
                 },
                 child: _isMore
                     ? Row(
@@ -942,23 +333,25 @@ class _DestinationPageState extends State<DestinationPage> {
         }
         // 处理数据 每3条数据放到一个row容器
         List<Widget> rowList = [];
+        if(imageItems.length % 3 ==1) {
+          imageItems.add(Expanded(child: Container()));
+          imageItems.add(Expanded(child: Container()));
+        }else if(imageItems.length % 3 ==1){
+          imageItems.add(Expanded(child: Container()));
+        }
         int start = 0;
         for (var k = 0; k < imageItems.length; k++) {
-          if(k % 3 == 0 && k != 0){
+          if((k+1) % 3 == 0 && k != 0){
             rowList.add(Row(
-              children: imageItems.sublist(start,k),
+              children: imageItems.sublist(start,(k+1)),
             ),);
-            start = k;
-          }else if(k == imageItems.length -1 && imageItems.length % 3 == 0){
+            start = k + 1;
+          }else if(imageItems.length - start < 3){
             rowList.add(Row(
-              children: imageItems.sublist(start,imageItems.length),
+              children: imageItems.sublist(start),
             ),);
-          }else if(start+3 >= imageItems.length){
-            rowList.add(Row(
-              children: imageItems.sublist(start,imageItems.length)
-            ),);
+            break;
           }
-
         }
         tabPage.add(
           Column(
