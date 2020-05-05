@@ -25,7 +25,7 @@ class _TabNavigatorState extends State<TabNavigator> {
       body: PageView(
         controller: _controller,
         children: <Widget>[
-          ScalableBox(),
+          TestPage(),
           DestinationPage(),
           TravelPage(),
           MyPage(),

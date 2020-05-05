@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/destination_dao.dart';
 import 'package:flutter_ctrip/model/destination_model.dart';
 import 'package:flutter_ctrip/plugin/vertical_tab_view.dart';
+import 'package:flutter_ctrip/widget/scalable_box.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
 
@@ -131,7 +132,9 @@ class _DestinationPageState extends State<DestinationPage> {
         List<Widget> imageItems = [];
         List<Widget> spanContent = [];
         List<Widget> visibleSpans = [];
+        List<Row> visibleRows = [];
         List<Widget> unVisibleSpans = [];
+        List<Row> unVisibleRows = [];
         for (var k = 0;
             k < navigationList[i].destAreaList[j].child.length;
             k++) {
@@ -235,13 +238,13 @@ class _DestinationPageState extends State<DestinationPage> {
           }
         }
         if (visibleSpans.length >= 9) {
-          spanContent.add(Row(
+          visibleRows.add(Row(
             children: visibleSpans.sublist(0,3),
           ));
-          spanContent.add(Row(
+          visibleRows.add(Row(
             children: visibleSpans.sublist(3,6),
           ));
-          spanContent.add(Row(
+          visibleRows.add(Row(
             children: visibleSpans.sublist(6,9),
           ));
         }else if(visibleSpans.length > 0 && visibleSpans.length < 9){
@@ -254,7 +257,7 @@ class _DestinationPageState extends State<DestinationPage> {
           int vStart = 0;
           for (var k = 0; k < visibleSpans.length; k++) {
             if((k+1) % 3 == 0 && k != 0){
-              spanContent.add(Row(
+              visibleRows.add(Row(
                 children: visibleSpans.sublist(vStart,(k+1)),
               ));
               vStart = k + 1;
@@ -262,7 +265,6 @@ class _DestinationPageState extends State<DestinationPage> {
           }
         }
         int unStart = 0;
-        List<Widget> unVisibleSpanRows = [];
         if (unVisibleSpans.length >= 9) {
           if(unVisibleSpans.length % 3 == 1){
             unVisibleSpans.add(Expanded(child: Container()));
@@ -272,62 +274,12 @@ class _DestinationPageState extends State<DestinationPage> {
           }
           for (var k = 0; k < unVisibleSpans.length; k++) {
             if((k+1) % 3 == 0 && k != 0){
-              unVisibleSpanRows.add(Row(
+              unVisibleRows.add(Row(
                 children: unVisibleSpans.sublist(unStart,(k+1)),
               ));
               unStart = k + 1;
             }
           }
-          spanContent.add(Offstage(
-            offstage: pageIndex == i && buttonIndex == j ? _isMore : true,
-            child: Column(
-              children: unVisibleSpanRows,
-            ),
-          ),);
-          spanContent.add(
-            Container(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _buttonMore(i,j);
-                  });
-                },
-                child: (pageIndex == i && buttonIndex == j ? _isMore :true)
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '展开',
-                            style:
-                                TextStyle(color: Colors.blue, fontFamily: ''),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.blue,
-                            size: 16,
-                          ),
-                        ],
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '收起',
-                            style:
-                                TextStyle(color: Colors.blue, fontFamily: ''),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_up,
-                            color: Colors.blue,
-                            size: 16,
-                          ),
-                        ],
-                      ),
-              ),
-            ),
-          );
         }
         // 处理数据 每3条数据放到一个row容器
         List<Widget> rowList = [];
@@ -357,15 +309,11 @@ class _DestinationPageState extends State<DestinationPage> {
             children: rowList,
           ),
         );
-        tabPage.add(
-          Container(
-            padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: spanContent,
-            ),
-          ),
-        );
+        if(visibleRows.length>0){
+          tabPage.add(
+            ScalableBox(visibleRows,unVisibleRows),
+          );
+        }
       }
       tabPages.add(MediaQuery.removePadding(
         removeTop: true,
