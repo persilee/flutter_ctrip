@@ -24,13 +24,9 @@ class SidePageView extends StatefulWidget {
     PageController controller,
     this.physics,
     this.onPageChanged,
-    List<Widget> titleChildren = const [],
-    List<Widget> children = const [],
-  }) : controller = controller ?? PageController(),
-        titleBuilder =
-        ((BuildContext context, int index) => titleChildren[index % titleChildren.length]),
-        bodyBuilder =
-        ((BuildContext context, int index) => children[index % titleChildren.length]);
+    this.titleChildren,
+    this.children,
+  }) : controller = controller ?? PageController();
 
   /// Takes two [IndexedWidgetBuilder]'s and constructs the title and the body from them.
   ///
@@ -40,14 +36,14 @@ class SidePageView extends StatefulWidget {
   SidePageView.builder({
     Key key,
     this.reverse = false,
-    this.pageSnapping = true,
+    this.pageSnapping = false,
     this.fadeEffect = true,
     this.controlButtons = true,
     PageController controller,
     this.physics,
     this.onPageChanged,
-    @required this.titleBuilder,
-    @required this.bodyBuilder
+    this.children,
+    this.titleChildren
   }) : controller = controller ?? PageController();
 
   /// The axis along which the page view scrolls.
@@ -91,7 +87,7 @@ class SidePageView extends StatefulWidget {
   /// ```
   /// The [titleBuilder] can be set
   /// directly by the [SidePageView.builder] constructor.
-  final IndexedWidgetBuilder titleBuilder;
+  final List<Widget> children;
 
   /// Builder objects for the title
   ///
@@ -101,7 +97,7 @@ class SidePageView extends StatefulWidget {
   /// (int index) => titleChildren[index % titleChildren.length])
   /// ```
   /// The [titleBuilder] can be set directly by the [SidePageView.builder] constructor.
-  final IndexedWidgetBuilder bodyBuilder;
+  final List<Widget> titleChildren;
 
   @override
   State<StatefulWidget> createState() => _SidePageViewState(initialPage: controller.initialPage);
@@ -114,6 +110,7 @@ class _SidePageViewState extends State<SidePageView> {
 
   final PageController _titleController;
   int _oldPage;
+  double _step = 0;
 
   double _controllerAnimationValue = 0.0;
 
@@ -123,7 +120,16 @@ class _SidePageViewState extends State<SidePageView> {
     widget.controller.addListener(() {
 
       setState(() {
-        if( (_oldPage - widget.controller.page).abs() >= 0.5) _oldPage = widget.controller.page.round();
+        if( (_oldPage - widget.controller.page).abs() >= 0.5) {
+          print(_step);
+          _oldPage = widget.controller.page.round();
+          if(_step >= widget.children.length * 20){
+            _step = 0;
+          }else{
+            _step += 20;
+          }
+        }
+
 
         _controllerAnimationValue = (widget.controller.page - _oldPage).abs();
 
@@ -135,10 +141,9 @@ class _SidePageViewState extends State<SidePageView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: 280,
       child: Column(
         children: <Widget>[
-          _controlBar(),
           Expanded(
             child: PageView.builder(
               reverse: widget.reverse,
@@ -146,11 +151,39 @@ class _SidePageViewState extends State<SidePageView> {
               physics: widget.physics,
               onPageChanged: widget.onPageChanged,
               controller: widget.controller,
-              itemBuilder: widget.bodyBuilder,
+              itemBuilder: (BuildContext context, int index) => widget.children[index % widget.children.length],
             ),
-          )
+          ),
+          _controlBar(),
+          indicator(),
         ],
       ),
+    );
+  }
+
+  Widget indicator() {
+    return Container(
+      height: 8,
+      width: 20*widget.children.length.toDouble(),
+      decoration: BoxDecoration(
+        color: Colors.grey.withAlpha(100),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            left: _step,
+            child: Container(
+              width: 10*widget.children.length.toDouble(),
+              height: 8,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(6),
+              ),
+            ),
+          ),
+        ],
+      )
     );
   }
 
@@ -178,7 +211,6 @@ class _SidePageViewState extends State<SidePageView> {
               padding: EdgeInsets.all(0.0),
               icon: Icon(Icons.chevron_right,size: 25.0,),
               onPressed: () {
-                print('-----------------' + widget.controller.page.toString());
                 widget.controller.nextPage(
                     duration: Duration(milliseconds: 300),
                     curve: Curves.ease
@@ -191,7 +223,6 @@ class _SidePageViewState extends State<SidePageView> {
   }
 
   Widget _title() {
-    print(MediaQuery.of(context).size.width*0.5);
     return Container(
       width: 0.5*MediaQuery.of(context).size.width,
       height: double.infinity,
@@ -206,9 +237,9 @@ class _SidePageViewState extends State<SidePageView> {
               child: widget.fadeEffect ?
               Opacity(
                 opacity: (1.0 - 2*_controllerAnimationValue).clamp(0.25,1.0),
-                child: widget.titleBuilder(context, index),
+                child: widget.titleChildren[index % widget.titleChildren.length],
               ) :
-              widget.titleBuilder(context, index),
+                  widget.titleChildren[index % widget.titleChildren.length],
             );
           }
       ),
@@ -218,7 +249,6 @@ class _SidePageViewState extends State<SidePageView> {
   @override
   void dispose() {
     super.dispose();
-
     _titleController.dispose();
   }
 }

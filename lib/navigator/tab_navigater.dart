@@ -4,6 +4,7 @@ import 'package:flutter_ctrip/pages/home_page.dart';
 import 'package:flutter_ctrip/pages/my_page.dart';
 import 'package:flutter_ctrip/pages/test_page.dart';
 import 'package:flutter_ctrip/pages/travel_page.dart';
+import 'package:flutter_ctrip/widget/scalable_box.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _TabNavigatorState extends State<TabNavigator> {
       body: PageView(
         controller: _controller,
         children: <Widget>[
-          HomePage(),
+          ScalableBox(),
           DestinationPage(),
           TravelPage(),
           MyPage(),

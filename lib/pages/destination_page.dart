@@ -21,7 +21,6 @@ class _DestinationPageState extends State<DestinationPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('点击了按钮');
     if (tabs.length > 0 && tabPages.length > 0) {
       setState(() {
         _isLoading = false;
