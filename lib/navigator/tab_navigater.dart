@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/pages/destination_page.dart';
 import 'package:flutter_ctrip/pages/home_page.dart';
 import 'package:flutter_ctrip/pages/my_page.dart';
+import 'package:flutter_ctrip/pages/test_page.dart';
 import 'package:flutter_ctrip/pages/travel_page.dart';
 
 class TabNavigator extends StatefulWidget {

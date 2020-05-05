@@ -15,15 +15,13 @@ class _DestinationPageState extends State<DestinationPage> {
   List<NavigationPopList> navigationList;
   List<Tab> tabs = [];
   List<Widget> tabPages = [];
-
   bool _isLoading = true;
-
   bool _isMore = true;
+  int pageIndex,buttonIndex;
 
   @override
   Widget build(BuildContext context) {
-    _createTab();
-    _createTabPage(context);
+    print('点击了按钮');
     if (tabs.length > 0 && tabPages.length > 0) {
       setState(() {
         _isLoading = false;
@@ -36,7 +34,7 @@ class _DestinationPageState extends State<DestinationPage> {
         child: Stack(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 90),
+              margin: EdgeInsets.only(top: 86),
               child: VerticalTabView(
                 tabsWidth: 88,
                 tabsElevation: 0,
@@ -51,10 +49,8 @@ class _DestinationPageState extends State<DestinationPage> {
                 contents: tabPages,
               ),
             ),
-
-
             Container(
-              padding: EdgeInsets.fromLTRB(8, 10, 6, 14),
+              padding: EdgeInsets.fromLTRB(8, 6, 6, 10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -80,6 +76,7 @@ class _DestinationPageState extends State<DestinationPage> {
         ),
       ),
     );
+
   }
 
   @override
@@ -283,7 +280,7 @@ class _DestinationPageState extends State<DestinationPage> {
             }
           }
           spanContent.add(Offstage(
-            offstage: _isMore,
+            offstage: pageIndex == i && buttonIndex == j ? _isMore : true,
             child: Column(
               children: unVisibleSpanRows,
             ),
@@ -292,9 +289,11 @@ class _DestinationPageState extends State<DestinationPage> {
             Container(
               child: GestureDetector(
                 onTap: () {
-
+                  setState(() {
+                    _buttonMore(i,j);
+                  });
                 },
-                child: _isMore
+                child: (pageIndex == i && buttonIndex == j ? _isMore :true)
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -387,7 +386,6 @@ class _DestinationPageState extends State<DestinationPage> {
         ),
       ));
     }
-    setState(() {});
   }
 
   void _jumpToSearch() {}
@@ -402,6 +400,14 @@ class _DestinationPageState extends State<DestinationPage> {
         destinationModel = model;
         navigationList = destinationModel.navigationPopList;
       });
+      _createTab();
+      _createTabPage(context);
     }).catchError((e) => print(e));
+  }
+
+  void _buttonMore(int i, int j) {
+    pageIndex = i;
+    buttonIndex = j;
+    _isMore = !_isMore;
   }
 }
