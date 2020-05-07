@@ -4,7 +4,14 @@ import 'package:flutter_statusbar/flutter_statusbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-const CATCH_URLS = ['m.ctrip.com/', 'm.ctrip.com/html5/', 'm.ctrip.com/html5', 'm.ctrip.com/html5/you/', 'm.ctrip.com/webapp/you/foods/'];
+const CATCH_URLS = [
+  'm.ctrip.com/',
+  'm.ctrip.com/html5/',
+  'm.ctrip.com/html5',
+  'm.ctrip.com/html5/you/',
+  'm.ctrip.com/webapp/you/foods/',
+  'm.ctrip.com/webapp/vacations/tour/list'
+];
 
 class WebView extends StatefulWidget {
   final String url;
@@ -14,8 +21,13 @@ class WebView extends StatefulWidget {
   final bool backForbid;
   final bool hideHead;
 
-  WebView({this.url, this.statusBarColor, this.title, this.hideAppBar,
-    this.backForbid = false, this.hideHead = false});
+  WebView(
+      {this.url,
+      this.statusBarColor,
+      this.title,
+      this.hideAppBar,
+      this.backForbid = false,
+      this.hideHead = false});
 
   @override
   _WebViewState createState() => _WebViewState();
@@ -34,39 +46,35 @@ class _WebViewState extends State<WebView> {
       _height = await FlutterStatusbar.height;
     } on PlatformException {}
     if (!mounted) return;
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
   void initState() {
-    super.initState();
     initPlatformState();
     webViewReference.close();
-    _onUrlChanged = webViewReference.onUrlChanged.listen((String url) {
-
-    });
+    print(widget.url);
+    _onUrlChanged = webViewReference.onUrlChanged.listen((String url) {});
     _onStateChanged =
         webViewReference.onStateChanged.listen((WebViewStateChanged state) {
-          switch (state.type) {
-            case WebViewState.startLoad:
-              if (_isToMain(state.url) && !exiting) {
-                if (widget.backForbid) {
-                  webViewReference.launch(widget.url);
-                } else {
-                  Navigator.pop(context);
-                  exiting = true;
-                }
-              }
-              break;
-            default:
-              break;
+      switch (state.type) {
+        case WebViewState.startLoad:
+          if (_isToMain(state.url) && !exiting) {
+            if (widget.backForbid) {
+              webViewReference.launch(widget.url);
+            } else {
+              Navigator.pop(context);
+              exiting = true;
+            }
           }
-        });
+          break;
+        default:
+          break;
+      }
+    });
     _onHttpError =
-        webViewReference.onHttpError.listen((WebViewHttpError error) {
-
-        });
+        webViewReference.onHttpError.listen((WebViewHttpError error) {});
+    super.initState();
   }
 
   _isToMain(String url) {
@@ -128,11 +136,13 @@ class _WebViewState extends State<WebView> {
 
   _appBar(Color backgroundColor, Color backButtonColor) {
     if (widget.hideAppBar ?? false) {
-      return  widget.hideHead ? Container(): Container(
-        color: backgroundColor,
-        height: 29,
-        width: double.infinity,
-      );
+      return widget.hideHead
+          ? Container()
+          : Container(
+              color: backgroundColor,
+              height: Theme.of(context).platform == TargetPlatform.iOS ? 34 : 29,
+              width: double.infinity,
+            );
     }
 
     return Container(

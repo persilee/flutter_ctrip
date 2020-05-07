@@ -4,7 +4,7 @@ class ScalableBox extends StatefulWidget {
   final List<Row> visibleSpans;
   final List<Row> unVisibleSpans;
 
-  ScalableBox(@required this.visibleSpans, @required this.unVisibleSpans);
+  ScalableBox(this.visibleSpans, this.unVisibleSpans);
 
   @override
   _ScalableBoxState createState() => _ScalableBoxState();

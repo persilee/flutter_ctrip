@@ -158,7 +158,7 @@ class _SearchBarState extends State<SearchBar> {
                       //输入文本的样式
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.fromLTRB(4, 0, 4, 14),
+                        contentPadding: Theme.of(context).platform == TargetPlatform.iOS ? EdgeInsets.fromLTRB(4, 0, 4, 15): EdgeInsets.fromLTRB(4, 0, 4, 13),
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(
                           fontSize: 14,

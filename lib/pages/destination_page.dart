@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/destination_dao.dart';
 import 'package:flutter_ctrip/model/destination_model.dart';
+import 'package:flutter_ctrip/pages/destination_search_page.dart';
+import 'package:flutter_ctrip/pages/speak_page.dart';
 import 'package:flutter_ctrip/plugin/vertical_tab_view.dart';
+import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/scalable_box.dart';
 import 'package:flutter_ctrip/widget/search_bar.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
+import 'package:flutter_ctrip/widget/webview.dart';
+
+const DEFAULT_TEXT = '目的地 | 主题 | 关键字';
 
 class DestinationPage extends StatefulWidget {
   @override
   _DestinationPageState createState() => _DestinationPageState();
 }
 
-class _DestinationPageState extends State<DestinationPage> {
+class _DestinationPageState extends State<DestinationPage> with AutomaticKeepAliveClientMixin {
   DestinationModel destinationModel;
   List<NavigationPopList> navigationList;
   List<Tab> tabs = [];
@@ -27,6 +33,9 @@ class _DestinationPageState extends State<DestinationPage> {
         _isLoading = false;
       });
     }
+    if(Theme.of(context).platform == TargetPlatform.iOS){
+
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: LoadingContainer(
@@ -34,7 +43,7 @@ class _DestinationPageState extends State<DestinationPage> {
         child: Stack(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 86),
+              margin: EdgeInsets.only(top: Theme.of(context).platform == TargetPlatform.iOS?92:86),
               child: VerticalTabView(
                 tabsWidth: 88,
                 tabsElevation: 0,
@@ -49,6 +58,8 @@ class _DestinationPageState extends State<DestinationPage> {
                 contents: tabPages,
               ),
             ),
+
+
             Container(
               padding: EdgeInsets.fromLTRB(8, 6, 6, 10),
               decoration: BoxDecoration(
@@ -66,7 +77,7 @@ class _DestinationPageState extends State<DestinationPage> {
                 child: SearchBar(
                   searchBarType: SearchBarType.homeLight,
                   inputBoxClick: _jumpToSearch,
-                  defaultText: '',
+                  defaultText: DEFAULT_TEXT,
                   speakClick: _jumpToSpeak,
                   rightButtonClick: _jumpToUser,
                 ),
@@ -138,101 +149,29 @@ class _DestinationPageState extends State<DestinationPage> {
         for (var k = 0;
             k < navigationList[i].destAreaList[j].child.length;
             k++) {
+          String imgName = navigationList[i].destAreaList[j].child[k].text;
+          String tagName = navigationList[i].destAreaList[j].child[k].tagList.length > 0 ?
+          navigationList[i].destAreaList[j].child[k].tagList[0].tagName : '';
+          String spanText = navigationList[i].destAreaList[j].child[k].text;
+          int tagListL = navigationList[i].destAreaList[j].child[k].tagList.length;
+          String picUrl = navigationList[i].destAreaList[j].child[k].picUrl;
+          String kwd = navigationList[i].destAreaList[j].child[k].kwd;
+          int id = navigationList[i].destAreaList[j].child[k].id;
           ///图片
-          if (navigationList[i].destAreaList[j].child[k].picUrl != '' &&
-              navigationList[i].destAreaList[j].child[k].picUrl != null) {
+          if (picUrl != '' && picUrl != null) {
             imageItems.add(
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(10, 8, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      PhysicalModel(
-                        borderRadius: BorderRadius.circular(6),
-                        clipBehavior: Clip.antiAlias,
-                        color: Colors.transparent,
-                        elevation: 5,
-                        child: Container(
-                          child: Image.network(
-                            navigationList[i].destAreaList[j].child[k].picUrl,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                        child: Text(
-                          navigationList[i].destAreaList[j].child[k].text,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style:
-                              TextStyle(color: Color(0xff333333).withAlpha(220)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              createImage(picUrl,tagListL,tagName,imgName,kwd,id),
             );
           } else {
             ///标签
             //当标签数量小于9个时，放到可以显示的容器
             if (k < 9) {
               visibleSpans.add(
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-                    decoration: BoxDecoration(
-                        color: Color(0xfff8f8f8),
-                        borderRadius: BorderRadius.circular(4),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withAlpha(30),
-                              offset: Offset(1, 1),
-                              spreadRadius: 1,
-                              blurRadius: 3),
-                        ]),
-                    height: 36,
-                    child: Text(
-                      navigationList[i].destAreaList[j].child[k].text,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Color(0xff333333).withAlpha(220), fontSize: 13),
-                    ),
-                  ),
-                ),
+                createSpan(spanText, tagListL, tagName, kwd, id),
               );
             } else if (k >= 9) {
               unVisibleSpans.add(
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-                    decoration: BoxDecoration(
-                        color: Color(0xfff8f8f8),
-                        borderRadius: BorderRadius.circular(4),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withAlpha(30),
-                              offset: Offset(1, 1),
-                              spreadRadius: 1,
-                              blurRadius: 3),
-                        ]),
-                    height: 36,
-                    child: Text(
-                      navigationList[i].destAreaList[j].child[k].text,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Color(0xff333333).withAlpha(220), fontSize: 13),
-                    ),
-                  ),
-                ),
+                createSpan(spanText, tagListL, tagName, kwd, id),
               );
             }
           }
@@ -335,9 +274,19 @@ class _DestinationPageState extends State<DestinationPage> {
     }
   }
 
-  void _jumpToSearch() {}
+  void _jumpToSearch() {
+    NavigatorUtil.push(
+      context,
+      DestinationSearchPage(
+        hint: DEFAULT_TEXT,
+        hideLeft: false,
+      ),
+    );
+  }
 
-  void _jumpToSpeak() {}
+  void _jumpToSpeak() {
+    NavigatorUtil.push(context, SpeakPage(pageType: 'destination',));
+  }
 
   void _jumpToUser() {}
 
@@ -356,5 +305,142 @@ class _DestinationPageState extends State<DestinationPage> {
     pageIndex = i;
     buttonIndex = j;
     _isMore = !_isMore;
+  }
+
+  Widget createSpan (String text, int tagListL, String tagText, String kwd, int id) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: (){
+          _openWebView(kwd,id);
+        },
+        child: Stack(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.fromLTRB(
+                  0, 0, 10, 10),
+              decoration: BoxDecoration(
+                  color: Color(0xfff8f8f8),
+                  borderRadius:
+                  BorderRadius.circular(4),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black
+                            .withAlpha(30),
+                        offset: Offset(1, 1),
+                        spreadRadius: 1,
+                        blurRadius: 3),
+                  ]),
+              height: 36,
+              child: Text(
+                text,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Color(0xff333333)
+                        .withAlpha(220),
+                    fontSize: 13),
+              ),
+            ),
+            tagListL>0?Positioned(
+              top: -8,
+              right: 4,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                height: 18,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color(0xffff7600),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(6),
+                    topLeft: Radius.circular(8),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(6),
+                  ),
+                ),
+                child: Text(tagText,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: TextStyle(color: Colors.white,fontSize: 12,),),
+              ),
+            ):Container(),
+          ],
+          overflow: Overflow.visible,
+        ),
+      ),
+    );
+  }
+
+  Widget createImage (String picUrl, int tagListL, String tagName, String imgName, String kwd, int id) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: (){
+          _openWebView(kwd,id);
+        },
+        child: Container(
+          padding: EdgeInsets.fromLTRB(10, 8, 0, 0),
+          child: Column(
+            children: <Widget>[
+              PhysicalModel(
+                borderRadius: BorderRadius.circular(6),
+                clipBehavior: Clip.antiAlias,
+                color: Colors.transparent,
+                elevation: 5,
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      child: Image.network(
+                        picUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    tagListL>0?Positioned(
+                      top: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                        height: 18,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Color(0xffff7600),
+                            borderRadius: BorderRadius.only(bottomRight: Radius.circular(8))
+                        ),
+                        child: Text(tagName,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(color: Colors.white,fontSize: 12,),),
+                      ),
+                    ):Container(),
+                  ],
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                child: Text(
+                  imgName,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style:
+                  TextStyle(color: Color(0xff333333).withAlpha(220)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+  void _openWebView(String kwd, int id) {
+    NavigatorUtil.push(context, WebView(
+      url: 'https://m.ctrip.com/webapp/vacations/tour/list?identifier=choice&kwd=${kwd}&poid=${id.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126',
+      hideAppBar: true,
+    ));
   }
 }

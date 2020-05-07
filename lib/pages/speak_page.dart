@@ -8,6 +8,7 @@
  * http://coding.imooc.com/learn/qa/321.html
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/pages/destination_search_page.dart';
 import 'package:flutter_ctrip/pages/search_page.dart';
 import 'package:flutter_ctrip/pages/travel_search_page.dart';
 import 'package:flutter_ctrip/plugin/asr_manager.dart';
@@ -78,17 +79,32 @@ class _SpeakPageState extends State<SpeakPage>
           if(speakResult.endsWith('，')) speakResult = speakResult.substring(0,speakResult.length-1);
         });
         Navigator.pop(context);
-        widget.pageType == 'home'? NavigatorUtil.push(
-            context,
-            SearchPage(
-              keyword: speakResult,
-              hideLeft: false,
-            )) : NavigatorUtil.push(
-            context,
-            TravelSearchPage(
-              keyword: speakResult,
-              hideLeft: false,
-            ));
+        switch (widget.pageType) {
+          case 'home':
+            NavigatorUtil.push(
+                context,
+                SearchPage(
+                  keyword: speakResult,
+                  hideLeft: false,
+                ));
+            break;
+          case 'travel':
+            NavigatorUtil.push(
+                context,
+                TravelSearchPage(
+                  keyword: speakResult,
+                  hideLeft: false,
+                ));
+            break;
+          case 'destination':
+            NavigatorUtil.push(
+                context,
+                DestinationSearchPage(
+                  keyword: speakResult,
+                  hideLeft: false,
+                ));
+            break;
+        }
       }
     }).catchError((e) {
       print("----------" + e.toString());
