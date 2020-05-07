@@ -3,10 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_ctrip/plugin/side_page_view.dart';
 import 'package:flutter_ctrip/plugin/vertical_tab_view.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:page_view_indicators/linear_progress_page_indicator.dart';
 import 'dart:math' as math;
-
-import 'package:scroll_to_index/scroll_to_index.dart';
 
 class TestPage extends StatefulWidget {
   final String title;

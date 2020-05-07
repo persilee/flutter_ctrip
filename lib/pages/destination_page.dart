@@ -58,8 +58,6 @@ class _DestinationPageState extends State<DestinationPage> with AutomaticKeepAli
                 contents: tabPages,
               ),
             ),
-
-
             Container(
               padding: EdgeInsets.fromLTRB(8, 6, 6, 10),
               decoration: BoxDecoration(
@@ -79,7 +77,8 @@ class _DestinationPageState extends State<DestinationPage> with AutomaticKeepAli
                   inputBoxClick: _jumpToSearch,
                   defaultText: DEFAULT_TEXT,
                   speakClick: _jumpToSpeak,
-                  rightButtonClick: _jumpToUser,
+                  rightButtonClick: _jumpToService,
+                  rightIcon: true,
                 ),
               ),
             ),
@@ -288,7 +287,13 @@ class _DestinationPageState extends State<DestinationPage> with AutomaticKeepAli
     NavigatorUtil.push(context, SpeakPage(pageType: 'destination',));
   }
 
-  void _jumpToUser() {}
+  void _jumpToService() {
+    NavigatorUtil.push(context, WebView(
+      url: 'https://m.ctrip.com/webapp/servicechatv2/?bizType=1105&channel=VAC&orderInfo=&isPreSale=1&pageCode=220008&thirdPartytoken=F2BCB02915C58496DD7DEA00278B68AF&sceneCode=0&isFreeLogin=',
+      hideAppBar: false,
+      title: '客服',
+    ));
+  }
 
   void _loadData() {
     DestinationDao.fetch().then((DestinationModel model) {

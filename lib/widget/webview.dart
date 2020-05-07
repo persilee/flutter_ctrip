@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:flutter/services.dart';
-import 'package:flutter_statusbar/flutter_statusbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
@@ -39,19 +37,9 @@ class _WebViewState extends State<WebView> {
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   StreamSubscription<WebViewHttpError> _onHttpError;
   bool exiting = false;
-  double _height;
-
-  initPlatformState() async {
-    try {
-      _height = await FlutterStatusbar.height;
-    } on PlatformException {}
-    if (!mounted) return;
-    setState(() {});
-  }
 
   @override
   void initState() {
-    initPlatformState();
     webViewReference.close();
     print(widget.url);
     _onUrlChanged = webViewReference.onUrlChanged.listen((String url) {});

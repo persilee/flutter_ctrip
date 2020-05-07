@@ -8,6 +8,7 @@ class SearchBar extends StatefulWidget {
   final bool enabled;
   final bool hideLeft;
   final bool isUserIcon;
+  final bool rightIcon;
   final SearchBarType searchBarType;
   final String hint;
   final String defaultText;
@@ -22,6 +23,7 @@ class SearchBar extends StatefulWidget {
       {Key key,
       this.enabled = true,
       this.isUserIcon: false,
+      this.rightIcon: false,
       this.hideLeft,
       this.searchBarType = SearchBarType.normal,
       this.hint,
@@ -105,24 +107,12 @@ class _SearchBarState extends State<SearchBar> {
           child: _inputBox(),
         ),
         _wrapTap(
-            widget.isUserIcon
-                ? Container(
-                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                    child: Image.asset(
-                      'images/user1.png',
-                      height: 24,
-                      width: 24,
-                    ),
-                  )
-                : Container(
-                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                    child: Image.asset(
-                      sMessage,
-                      height: 24,
-                      width: 24,
-                    ),
-                  ),
-            widget.rightButtonClick)
+            widget.rightIcon
+                ? rightIcon('images/kefu.png')
+                : widget.isUserIcon
+                    ? rightIcon('images/user1.png')
+                    : rightIcon(sMessage),
+            widget.rightButtonClick),
       ]),
     );
   }
@@ -143,7 +133,10 @@ class _SearchBarState extends State<SearchBar> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset('images/sousuo.png',width: 17,),
+          Image.asset(
+            'images/sousuo.png',
+            width: 17,
+          ),
           Expanded(
               flex: 1,
               child: widget.searchBarType == SearchBarType.normal
@@ -158,7 +151,10 @@ class _SearchBarState extends State<SearchBar> {
                       //输入文本的样式
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: Theme.of(context).platform == TargetPlatform.iOS ? EdgeInsets.fromLTRB(4, 0, 4, 15): EdgeInsets.fromLTRB(4, 0, 4, 13),
+                        contentPadding:
+                            Theme.of(context).platform == TargetPlatform.iOS
+                                ? EdgeInsets.fromLTRB(4, 0, 4, 15)
+                                : EdgeInsets.fromLTRB(4, 0, 4, 13),
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(
                           fontSize: 14,
@@ -198,7 +194,10 @@ class _SearchBarState extends State<SearchBar> {
                       widget.inputBoxClick)),
           !showClear
               ? _wrapTap(
-                  Image.asset('images/yuyin.png',width: 17,),
+                  Image.asset(
+                    'images/yuyin.png',
+                    width: 17,
+                  ),
                   widget.speakClick)
               : _wrapTap(
                   Icon(
@@ -244,5 +243,16 @@ class _SearchBarState extends State<SearchBar> {
     return widget.searchBarType == SearchBarType.homeLight
         ? Colors.black54
         : Colors.white;
+  }
+
+  rightIcon(String icon) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      child: Image.asset(
+        icon,
+        height: 24,
+        width: 24,
+      ),
+    );
   }
 }
