@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 const CATCH_URLS = [
@@ -111,7 +112,7 @@ class _WebViewState extends State<WebView> {
                 initialChild: Container(
                   color: Colors.white,
                   child: Center(
-                    child: Text('Waiting...'),
+                    child: CircularProgressIndicator(),
                   ),
                 ),
               ),

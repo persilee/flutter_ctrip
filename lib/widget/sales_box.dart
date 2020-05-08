@@ -103,7 +103,7 @@ class SalesBox extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => WebView(
                 url: model.url,
-                title: model.title,
+                title: model.title ?? '活动',
               ),
             ),
           );
