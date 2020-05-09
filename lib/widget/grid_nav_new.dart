@@ -36,7 +36,7 @@ class _GridNavNewState extends State<GridNavNew> {
                       ));
                     },
                     child: Container(
-                      width: 105,
+                      width: 110,
                       height: double.infinity,
                       decoration: BoxDecoration(
                         border: Border(
@@ -184,7 +184,7 @@ class _GridNavNewState extends State<GridNavNew> {
                       ));
                     },
                     child: Container(
-                      width: 105,
+                      width: 110,
                       decoration: BoxDecoration(
                         border: Border(
                             right: BorderSide(
@@ -323,7 +323,7 @@ class _GridNavNewState extends State<GridNavNew> {
                       ));
                     },
                     child: Container(
-                      width: 105,
+                      width: 110,
                       decoration: BoxDecoration(
                         border: Border(
                             right: BorderSide(

@@ -25,20 +25,22 @@ class SpeakPage extends StatefulWidget {
 }
 
 class _SpeakPageState extends State<SpeakPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, TickerProviderStateMixin {
   String speakTips = '长按说话';
   String speakResult = '';
+  bool isUnResult = true;
+  bool isStart = false;
   Animation<double> animation;
   AnimationController controller;
 
   @override
   void initState() {
     controller = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1000));
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn)
+        vsync: this, duration: Duration(milliseconds: 1500));
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeInCubic)
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          controller.reverse();
+          controller.reset();
         } else if (status == AnimationStatus.dismissed) {
           controller.forward();
         }
@@ -56,11 +58,14 @@ class _SpeakPageState extends State<SpeakPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[_topItem(), _bottomItem()],
+            children: <Widget>[
+              isStart ? _startTip() :
+              isUnResult ? _topItem() : _topTip(),
+              _bottomItem()],
           ),
         ),
       ),
@@ -70,7 +75,8 @@ class _SpeakPageState extends State<SpeakPage>
   _speakStart() {
     controller.forward();
     setState(() {
-      speakTips = '- 识别中 -';
+      speakTips = '松开完成';
+      isStart = true;
     });
     AsrManager.start().then((text) {
       if (text != null && text.length > 0) {
@@ -105,8 +111,16 @@ class _SpeakPageState extends State<SpeakPage>
                 ));
             break;
         }
+      }else{
+        print(text + '-----------------------------');
+        setState(() {
+          isUnResult = false;
+        });
       }
     }).catchError((e) {
+      setState(() {
+        isUnResult = false;
+      });
       print("----------" + e.toString());
     });
   }
@@ -114,10 +128,33 @@ class _SpeakPageState extends State<SpeakPage>
   _speakStop() {
     setState(() {
       speakTips = '长按说话';
+      isStart = false;
     });
     controller.reset();
     controller.stop();
     AsrManager.stop();
+  }
+  _startTip() {
+    return Column(
+      children: <Widget>[
+        Padding(padding: EdgeInsets.only(top: 10),),
+        Image.network('https://images3.c-ctrip.com/marketing/2015/07/coupon_new_h5/dlp_awk.png',height: 80,width: 80,),
+        Padding(padding: EdgeInsets.only(top: 10),),
+        Text('正在听您说...', style: TextStyle(fontSize: 16, color: Colors.black.withAlpha(180),letterSpacing: 1.2)),
+      ],
+    );
+  }
+  _topTip(){
+    return Column(
+      children: <Widget>[
+        Padding(padding: EdgeInsets.only(top: 10),),
+        Image.network('https://images3.c-ctrip.com/marketing/2015/07/coupon_new_h5/dlp_awk.png',height: 80,width: 80,),
+        Padding(padding: EdgeInsets.only(top: 10),),
+        Text('你好像没有说话', style: TextStyle(fontSize: 16, color: Colors.black.withAlpha(180),letterSpacing: 1.2)),
+        Padding(padding: EdgeInsets.only(top: 8),),
+        Text('请按住话筒重新开始', style: TextStyle(fontSize: 14, color: Colors.black.withAlpha(100),letterSpacing: 1.2)),
+      ],
+    );
   }
 
   _topItem() {
@@ -126,7 +163,7 @@ class _SpeakPageState extends State<SpeakPage>
         Padding(
             padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
             child: Text('你可以这样说',
-                style: TextStyle(fontSize: 16, color: Colors.black54))),
+                style: TextStyle(fontSize: 16, color: Colors.black.withAlpha(180)))),
         Text('故宫门票\n北京一日游\n迪士尼乐园',
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -145,94 +182,109 @@ class _SpeakPageState extends State<SpeakPage>
   }
 
   _bottomItem() {
-    return FractionallySizedBox(
-      widthFactor: 1,
-      child: Stack(
-        children: <Widget>[
-          GestureDetector(
-            onTapDown: (e) {
-              _speakStart();
-            },
-            onTapUp: (e) {
-              _speakStop();
-            },
-            onTapCancel: () {
-              _speakStop();
-            },
-            child: Center(
-              child: Column(
+    return Stack(
+      children: <Widget>[
+        GestureDetector(
+          onTapDown: (e) {
+            _speakStart();
+          },
+          onTapUp: (e) {
+            _speakStop();
+          },
+          onTapCancel: () {
+            _speakStop();
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      speakTips,
-                      style: TextStyle(color: Colors.blue, fontSize: 12),
-                    ),
+                  Text(
+                    speakTips,
+                    style: TextStyle(color: Colors.blue, fontSize: 12),
                   ),
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                        //占坑，避免动画执行过程中导致父布局大小变得
-                        height: MIC_SIZE,
-                        width: MIC_SIZE,
-                      ),
-                      Center(
-                        child: AnimatedMic(
-                          animation: animation,
-                        ),
-                      )
-                    ],
-                  )
+                  AnimatedWear(
+                    animation: animation,
+                    isStart: isStart,
+                  ),
                 ],
               ),
+            ],
+          ),
+        ),
+        Positioned(
+          right: 0,
+          bottom: 26,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.close,
+              size: 26,
+              color: Colors.grey,
             ),
           ),
-          Positioned(
-            right: 0,
-            bottom: 20,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.close,
-                size: 30,
-                color: Colors.grey,
-              ),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }
 
-const double MIC_SIZE = 80;
-
-class AnimatedMic extends AnimatedWidget {
-  static final _opacityTween = Tween<double>(begin: 1, end: 0.5);
-  static final _sizeTween = Tween<double>(begin: MIC_SIZE, end: MIC_SIZE - 20);
-
-  AnimatedMic({Key key, Animation<double> animation})
+class AnimatedWear extends AnimatedWidget {
+  final bool isStart;
+  static final _opacityTween = Tween<double>(begin: 0.5, end: 0);
+  static final _sizeTween = Tween<double>(begin: 90, end: 260);
+  AnimatedWear({Key key,this.isStart, Animation<double> animation})
       : super(key: key, listenable: animation);
 
   @override
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable;
-    return Opacity(
-      opacity: _opacityTween.evaluate(animation),
-      child: Container(
-        height: _sizeTween.evaluate(animation),
-        width: _sizeTween.evaluate(animation),
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(MIC_SIZE / 2),
-        ),
-        child: Icon(
-          Icons.mic,
-          color: Colors.white,
-          size: 30,
-        ),
+    return Container(
+      height: 90,
+      width: 90,
+      child: Stack(
+        overflow: Overflow.visible,
+        alignment: Alignment.center,
+        children: <Widget>[
+          isStart ? Container(
+            decoration: BoxDecoration(
+              color: Colors.black.withAlpha(30),
+              borderRadius: BorderRadius.circular(45),
+            ),
+          ) : Container(),
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(35),
+            ),
+            child: Icon(
+              Icons.mic,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+          Positioned(
+            left: -((_sizeTween.evaluate(animation) - 90) / 2), //45
+            top: -((_sizeTween.evaluate(animation) - 90) / 2), //45,
+            child: Opacity(
+              opacity: _opacityTween.evaluate(animation),
+              child: Container(
+                width: isStart ? _sizeTween.evaluate(animation) : 0,
+                height: _sizeTween.evaluate(animation),
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(_sizeTween.evaluate(animation) / 2),
+                    border: Border.all(color: Color(0xa8000000),)
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
