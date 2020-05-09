@@ -32,6 +32,7 @@ class _SpeakPageState extends State<SpeakPage>
   bool isStart = false;
   Animation<double> animation;
   AnimationController controller;
+  bool isVTop = true;
 
   @override
   void initState() {
@@ -63,9 +64,9 @@ class _SpeakPageState extends State<SpeakPage>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              isStart ? _startTip() :
-              isUnResult ? _topItem() : _topTip(),
-              _bottomItem()],
+              isVTop ? _topItem() : isStart ? _startTip() : !isUnResult ? _topTip() : Container(),
+              _bottomItem()
+            ],
           ),
         ),
       ),
@@ -77,12 +78,14 @@ class _SpeakPageState extends State<SpeakPage>
     setState(() {
       speakTips = '松开完成';
       isStart = true;
+      isVTop = false;
     });
     AsrManager.start().then((text) {
       if (text != null && text.length > 0) {
         setState(() {
           speakResult = text;
-          if(speakResult.endsWith('，')) speakResult = speakResult.substring(0,speakResult.length-1);
+          if (speakResult.endsWith('，'))
+            speakResult = speakResult.substring(0, speakResult.length - 1);
         });
         Navigator.pop(context);
         switch (widget.pageType) {
@@ -111,8 +114,7 @@ class _SpeakPageState extends State<SpeakPage>
                 ));
             break;
         }
-      }else{
-        print(text + '-----------------------------');
+      } else {
         setState(() {
           isUnResult = false;
         });
@@ -134,25 +136,57 @@ class _SpeakPageState extends State<SpeakPage>
     controller.stop();
     AsrManager.stop();
   }
+
   _startTip() {
     return Column(
       children: <Widget>[
-        Padding(padding: EdgeInsets.only(top: 10),),
-        Image.network('https://images3.c-ctrip.com/marketing/2015/07/coupon_new_h5/dlp_awk.png',height: 80,width: 80,),
-        Padding(padding: EdgeInsets.only(top: 10),),
-        Text('正在听您说...', style: TextStyle(fontSize: 16, color: Colors.black.withAlpha(180),letterSpacing: 1.2)),
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+        Image.network(
+          'https://images3.c-ctrip.com/marketing/2015/07/coupon_new_h5/dlp_awk.png',
+          height: 80,
+          width: 80,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+        Text('正在听您说...',
+            style: TextStyle(
+                fontSize: 16,
+                color: Colors.black.withAlpha(180),
+                letterSpacing: 1.2)),
       ],
     );
   }
-  _topTip(){
+
+  _topTip() {
     return Column(
       children: <Widget>[
-        Padding(padding: EdgeInsets.only(top: 10),),
-        Image.network('https://images3.c-ctrip.com/marketing/2015/07/coupon_new_h5/dlp_awk.png',height: 80,width: 80,),
-        Padding(padding: EdgeInsets.only(top: 10),),
-        Text('你好像没有说话', style: TextStyle(fontSize: 16, color: Colors.black.withAlpha(180),letterSpacing: 1.2)),
-        Padding(padding: EdgeInsets.only(top: 8),),
-        Text('请按住话筒重新开始', style: TextStyle(fontSize: 14, color: Colors.black.withAlpha(100),letterSpacing: 1.2)),
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+        Image.network(
+          'https://pages.c-ctrip.com/you/livestream/lvpai_you_img2.png',
+          height: 80,
+          width: 80,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+        Text('你好像没有说话',
+            style: TextStyle(
+                fontSize: 16,
+                color: Colors.black.withAlpha(180),
+                letterSpacing: 1.2)),
+        Padding(
+          padding: EdgeInsets.only(top: 8),
+        ),
+        Text('请按住话筒重新开始',
+            style: TextStyle(
+                fontSize: 14,
+                color: Colors.black.withAlpha(100),
+                letterSpacing: 1.2)),
       ],
     );
   }
@@ -161,15 +195,19 @@ class _SpeakPageState extends State<SpeakPage>
     return Column(
       children: <Widget>[
         Padding(
-            padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-            child: Text('你可以这样说',
-                style: TextStyle(fontSize: 16, color: Colors.black.withAlpha(180)))),
-        Text('故宫门票\n北京一日游\n迪士尼乐园',
-            textAlign: TextAlign.center,
+          padding: EdgeInsets.fromLTRB(0, 30, 0, 26),
+          child: Text(
+            '你可以这样说',
             style: TextStyle(
-              fontSize: 15,
-              color: Colors.grey,
-            )),
+              fontSize: 16,
+              color: Colors.black.withAlpha(180),
+            ),
+          ),
+        ),
+        _textItem('东方明珠'),
+        _textItem('三亚自由行'),
+        _textItem('迪士尼乐园'),
+        _textItem('日本跟团游'),
         Padding(
           padding: EdgeInsets.all(20),
           child: Text(
@@ -178,6 +216,18 @@ class _SpeakPageState extends State<SpeakPage>
           ),
         )
       ],
+    );
+  }
+
+  _textItem(String text) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 6),
+      child: Text(text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 15,
+            color: Colors.grey,
+          )),
     );
   }
 
@@ -236,7 +286,8 @@ class AnimatedWear extends AnimatedWidget {
   final bool isStart;
   static final _opacityTween = Tween<double>(begin: 0.5, end: 0);
   static final _sizeTween = Tween<double>(begin: 90, end: 260);
-  AnimatedWear({Key key,this.isStart, Animation<double> animation})
+
+  AnimatedWear({Key key, this.isStart, Animation<double> animation})
       : super(key: key, listenable: animation);
 
   @override
@@ -249,12 +300,14 @@ class AnimatedWear extends AnimatedWidget {
         overflow: Overflow.visible,
         alignment: Alignment.center,
         children: <Widget>[
-          isStart ? Container(
-            decoration: BoxDecoration(
-              color: Colors.black.withAlpha(30),
-              borderRadius: BorderRadius.circular(45),
-            ),
-          ) : Container(),
+          isStart
+              ? Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black.withAlpha(30),
+                    borderRadius: BorderRadius.circular(45),
+                  ),
+                )
+              : Container(),
           Container(
             height: 70,
             width: 70,
@@ -278,9 +331,11 @@ class AnimatedWear extends AnimatedWidget {
                 height: _sizeTween.evaluate(animation),
                 decoration: BoxDecoration(
                     color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(_sizeTween.evaluate(animation) / 2),
-                    border: Border.all(color: Color(0xa8000000),)
-                ),
+                    borderRadius: BorderRadius.circular(
+                        _sizeTween.evaluate(animation) / 2),
+                    border: Border.all(
+                      color: Color(0xa8000000),
+                    )),
               ),
             ),
           ),
