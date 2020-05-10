@@ -90,13 +90,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.0"
-  flutter_statusbar:
-    dependency: "direct main"
-    description:
-      name: flutter_statusbar
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.0.1"
   flutter_swiper:
     dependency: "direct main"
     description:
@@ -247,13 +240,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.8"
-  vertical_tabs:
-    dependency: "direct main"
-    description:
-      name: vertical_tabs
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.2.0"
   xml:
     dependency: transitive
     description:

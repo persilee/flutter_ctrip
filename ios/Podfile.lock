@@ -1,26 +1,20 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_statusbar (0.0.1):
-    - Flutter
   - flutter_webview_plugin (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_statusbar (from `.symlinks/plugins/flutter_statusbar/ios`)
   - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_statusbar:
-    :path: ".symlinks/plugins/flutter_statusbar/ios"
   flutter_webview_plugin:
     :path: ".symlinks/plugins/flutter_webview_plugin/ios"
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_statusbar: aa4982b847304a72c5ac8439a9f37861b662c6bb
   flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
 
 PODFILE CHECKSUM: 3dbe063e9c90a5d7c9e4e76e70a821b9e2c1d271
