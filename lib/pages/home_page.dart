@@ -27,14 +27,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List _imageUrls = [
-    'https://dimg04.c-ctrip.com/images/zg0m1e000001ft33l2B3A.jpg',
-    'https://dimg04.c-ctrip.com/images/zg0r1f000001g93pa8043.jpg',
-    'https://dimg04.c-ctrip.com/images/zg0n1e000001fh5i4F9D7.jpg',
-    'https://dimg04.c-ctrip.com/images/zg0p1e000001f50p101A5.jpg',
-    'https://dimg04.c-ctrip.com/images/zg0m1e000001ft33l2B3A.jpg',
-    'https://dimg04.c-ctrip.com/images/zg0r1f000001g93pa8043.jpg'
-  ];
 
   double appBarAlpha = 0;
   List<CommonModel> localNavList = [];
