@@ -1,6 +1,6 @@
 # 跨端(iOS/Android)移动应用创建携程App
 
-Blog : [https://h.lishaoy.net/flutterCtrip.htmll](https://h.lishaoy.net/flutterCtrip.htmll)
+Blog : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
 
 这是一个基于 **Flutter** 的跨平台(iOS/Android)移动应用创建携程App，如图：
 
