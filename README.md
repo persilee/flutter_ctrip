@@ -12,5 +12,5 @@ Blog : [https://h.lishaoy.net/flutterCtrip.htmll](https://h.lishaoy.net/flutterC
 |:----:|:--------------------------------------------------------------  |
 |   1  | [Flutter 初识](https://h.lishaoy.net/beautifulFlutter.html)      |
 |   2  | [Flutter 环境搭建](https://h.lishaoy.net/flutterInstall.html)     |
-|   3  | [Flutter 初体验（实战）](https://h.lishaoy.net/fristFlutter.htmll) |
-|   4  | [Flutter 10天高仿大厂App及小技巧积累总结（实战）](https://h.lishaoy.net/flutterCtrip.htmll) |
+|   3  | [Flutter 初体验（实战）](https://h.lishaoy.net/fristFlutter.html) |
+|   4  | [Flutter 10天高仿大厂App及小技巧积累总结（实战）](https://h.lishaoy.net/flutterctrip) |
