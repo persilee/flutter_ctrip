@@ -5,7 +5,7 @@ Blog : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
 **Tips:** 
 
 由于百度AI语言识别SDK包的 `libBaiduSpeechSDK.a` 有 **184.2M**，放到GitHub上下载很慢，所以，请[点击下载 libBaiduSpeechSDK.a 文件](https://speech-doc.gz.bcebos.com/ios-asr/ASR_iOS_v3.0.9.0_20200107_Release.zip)，
-解压后，把 `BDSClientLib\libBaiduSpeechSDK.a` 放到 `flutter_ctrip/ios/Plugin/ASRPlugin/BDSClientLib` 目录下。
+解压后，把 `BDSClientLib/libBaiduSpeechSDK.a` 目录放到 `flutter_ctrip/ios/Plugin/ASRPlugin/` 目录下。
 
 这是一个基于 **Flutter** 的跨平台(iOS/Android)移动应用创建携程App，如图：
 
