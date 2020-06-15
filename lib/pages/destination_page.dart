@@ -224,7 +224,7 @@ class _DestinationPageState extends State<DestinationPage> with AutomaticKeepAli
         if(imageItems.length % 3 ==1) {
           imageItems.add(Expanded(child: Container()));
           imageItems.add(Expanded(child: Container()));
-        }else if(imageItems.length % 3 ==1){
+        }else if(imageItems.length % 3 ==2){
           imageItems.add(Expanded(child: Container()));
         }
         int start = 0;
