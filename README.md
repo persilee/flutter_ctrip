@@ -12,7 +12,7 @@
 |:---:|:---:|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/speak.gif "speak" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/banner.gif "banner" )|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination.gif "destination" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination-search.gif "destination" )|
-|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel.gif "travel" )|
+|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )||
 
 
 Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
