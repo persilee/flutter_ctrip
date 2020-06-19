@@ -16,7 +16,7 @@
 
 大家也可以，[移步这里点击观看](https://www.bilibili.com/video/BV16p4y1Q71f/) （可点击齿轮设置隐藏黑边）
 
-或者安装体验：
+或者安装体验：[[FCtrip.apk](https://github.com/persilee/flutter_ctrip/release/download/FCtrip_V1.0.0.apk)]
 
 ![手机扫描二维码安装](https://www.pgyer.com/app/qrcode/HqqH "手机扫描二维码安装")
 
