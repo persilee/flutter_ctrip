@@ -9,15 +9,15 @@
 ### 项目效果预览图
 
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/appBar.gif "appBar" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/searchBar.gif "searchBar" )|
-|---|---|
+|:---:|:---|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/speak.gif "speak" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/banner.gif "banner" )|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination.gif "destination" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination-search.gif "destination" )|
-|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel.gif "travel" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )|
+|![travel](https://cdn.lishaoy.net/flutterCtrip/travel.gif "travel")|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )|
 
 
-Blog : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
+Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
 
-**Tips:** 
+### 特别提醒
 
 由于百度AI语言识别SDK包的 `libBaiduSpeechSDK.a` 有 **184.2M**，放到GitHub上下载很慢，所以，请[点击下载 libBaiduSpeechSDK.a 文件](https://speech-doc.gz.bcebos.com/ios-asr/ASR_iOS_v3.0.9.0_20200107_Release.zip)，
 解压后，把 `BDSClientLib/libBaiduSpeechSDK.a` 目录放到 `flutter_ctrip/ios/Plugin/ASRPlugin/` 目录下。
