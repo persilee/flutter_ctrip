@@ -70,3 +70,5 @@
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 **/ios/Plugin/ASRPlugin/BDSClientLib/
+
+flutter_ctrip_key_store

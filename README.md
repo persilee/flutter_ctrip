@@ -14,6 +14,11 @@
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination.gif "destination" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination-search.gif "destination" )|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )||
 
+大家也可以，[移步这里点击观看](https://www.bilibili.com/video/BV16p4y1Q71f/) （可点击齿轮设置隐藏黑边）
+
+大家也可扫描，安装体验：
+
+![手机扫描二维码安装](https://www.pgyer.com/app/qrcode/HqqH "手机扫描二维码安装")
 
 Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
 
