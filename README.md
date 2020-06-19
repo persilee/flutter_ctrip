@@ -9,10 +9,10 @@
 ### 项目效果预览图
 
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/appBar.gif "appBar" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/searchBar.gif "searchBar" )|
-|:---:|:---|
+|:---:|:---:|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/speak.gif "speak" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/banner.gif "banner" )|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination.gif "destination" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination-search.gif "destination" )|
-|![travel](https://cdn.lishaoy.net/flutterCtrip/travel.gif "travel")|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )|
+|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel.gif "travel" )|
 
 
 Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterctrip)
