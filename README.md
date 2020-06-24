@@ -38,4 +38,4 @@ Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterc
 
 ### 更新日志
 
-- 202-06-24 23：56 优化 tab navigation（使用 AutomaticKeepAliveClientMixin 保活页面，加入页面切换动画）
+- 202-06-24 23:56 优化 tab navigation（使用 AutomaticKeepAliveClientMixin 保活页面，加入页面切换动画）
