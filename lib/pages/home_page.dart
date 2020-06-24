@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ctrip/dao/home_dao.dart';
 import 'package:flutter_ctrip/model/common_model.dart';
 import 'package:flutter_ctrip/model/grid_nav_model.dart';
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
       backgroundColor: Color(0xfffafafc),
       body: LoadingContainer(
