@@ -9,15 +9,28 @@ class TabNavigator extends StatefulWidget {
   _TabNavigatorState createState() => _TabNavigatorState();
 }
 
-class _TabNavigatorState extends State<TabNavigator> {
+class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
   final _defaultColor = Color(0xff8a8a8a);
   final _activeColor = Color(0xff50b4ed);
   int _currentIndex = 0;
-  final PageController _controller = PageController(
-    initialPage: 0,
-  );
+  PageController _controller;
 
   @override
+  void initState() {
+    super.initState();
+    _controller = PageController(
+      initialPage: 0,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  // ignore: must_call_super
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
@@ -33,7 +46,7 @@ class _TabNavigatorState extends State<TabNavigator> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) {
-            _controller.jumpToPage(index);
+            _controller.animateToPage(index, curve: Curves.easeIn , duration: Duration(milliseconds: 260));
             setState(() {
               _currentIndex = index;
             });
@@ -84,4 +97,8 @@ class _TabNavigatorState extends State<TabNavigator> {
           ]),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
