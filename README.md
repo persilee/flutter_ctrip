@@ -35,3 +35,7 @@ Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterc
 |   2  | [Flutter 环境搭建](https://h.lishaoy.net/flutterInstall.html)     |
 |   3  | [Flutter 初体验（实战）](https://h.lishaoy.net/fristFlutter.html) |
 |   4  | [Flutter 10天高仿大厂App及小技巧积累总结（实战）](https://h.lishaoy.net/flutterctrip) |
+
+### 更新日志
+
+- 202-06-24 23：56 优化 tab navigation（使用 AutomaticKeepAliveClientMixin 保活页面，加入页面切换动画）
