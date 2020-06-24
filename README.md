@@ -14,7 +14,7 @@
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination.gif "destination" )|![no-shadow](https://cdn.lishaoy.net/flutterCtrip/destination-search.gif "destination" )|
 |![no-shadow](https://cdn.lishaoy.net/flutterCtrip/travel-search.gif "travel-search" )||
 
-大家也可以，[移步这里点击观看](https://www.bilibili.com/video/BV16p4y1Q71f/) （可点击齿轮设置隐藏黑边）
+大家也可以，[移步这里点击观看视频](https://www.bilibili.com/video/BV16p4y1Q71f/) （可点击齿轮设置隐藏黑边）
 
 或者安装体验(Android)：[[FCtrip.apk](https://github.com/persilee/flutter_ctrip/releases/download/V1.0.0-beta.1/app-release.apk)]，iOS请自行运行代码安装。
 
