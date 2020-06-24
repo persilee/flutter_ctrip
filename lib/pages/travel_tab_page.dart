@@ -5,6 +5,7 @@ import 'package:flutter_ctrip/model/travel_model.dart';
 import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 const _TRAVEL_URL =
     'https://m.ctrip.com/restapi/soa2/16189/json/searchTripShootListForHomePageV2?_fxpcqlniredt=09031014111431397988&__gw_appid=99999999&__gw_ver=1.0&__gw_from=10650013707&__gw_platform=H5';
@@ -29,6 +30,7 @@ class _TravelTabPageState extends State<TravelTabPage>
   List<TravelItem> travelItems;
   int pageIndex = 1;
   bool _loading = true;
+  bool _loadMore = false;
   ScrollController _scrollController = ScrollController();
 
   @override
@@ -60,17 +62,24 @@ class _TravelTabPageState extends State<TravelTabPage>
           child: MediaQuery.removePadding(
               removeTop: true,
               context: context,
-              child: StaggeredGridView.countBuilder(
-                controller: _scrollController,
-                crossAxisCount: 4,
-                itemCount: travelItems?.length ?? 0,
-                itemBuilder: (BuildContext context, int index) => _TravelItem(
-                      index: index,
-                      item: travelItems[index],
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    child: StaggeredGridView.countBuilder(
+                      controller: _scrollController,
+                      crossAxisCount: 4,
+                      itemCount: travelItems?.length ?? 0,
+                      itemBuilder: (BuildContext context, int index) => _TravelItem(
+                        index: index,
+                        item: travelItems[index],
+                      ),
+                      staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
+                      mainAxisSpacing: 2.0,
+                      crossAxisSpacing: 2.0,
                     ),
-                staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
-                mainAxisSpacing: 2.0,
-                crossAxisSpacing: 2.0,
+                  ),
+                  _loadMoreIndicator(_loadMore),
+                ],
               )),
         ),
       ),
@@ -79,6 +88,9 @@ class _TravelTabPageState extends State<TravelTabPage>
 
   void _loadData({loadMore = false}) {
     if (loadMore) {
+      setState(() {
+        _loadMore = true;
+      });
       pageIndex++;
     } else {
       pageIndex = 1;
@@ -92,6 +104,7 @@ class _TravelTabPageState extends State<TravelTabPage>
         List<TravelItem> items = _filterItems(model.resultList);
         if (travelItems != null) {
           travelItems.addAll(items);
+          _loadMore = false;
         } else {
           travelItems = items;
         }
@@ -123,6 +136,25 @@ class _TravelTabPageState extends State<TravelTabPage>
     _loadData();
     return null;
   }
+}
+
+
+Widget _loadMoreIndicator(loadMore){
+
+  Widget loadMoreIndicator = loadMore ?
+      Padding(
+        padding: EdgeInsets.all(6),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SpinKitFadingCircle(color: Colors.blue,size: 24,),
+            Padding(padding: EdgeInsets.only(right: 5),),
+            Text("加载中...",style: TextStyle(fontSize: 14,color: Colors.grey),),
+          ],
+        ),
+      ) : Container();
+
+  return loadMoreIndicator;
 }
 
 class _TravelItem extends StatelessWidget {
