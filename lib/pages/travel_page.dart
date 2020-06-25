@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ctrip/dao/trave_hot_keyword_dao.dart';
 import 'package:flutter_ctrip/dao/travel_params_dao.dart';
 import 'package:flutter_ctrip/dao/travel_tab_dao.dart';
@@ -28,6 +29,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
       body: Column(
         children: <Widget>[

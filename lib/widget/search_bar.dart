@@ -154,7 +154,7 @@ class _SearchBarState extends State<SearchBar> {
                         contentPadding:
                             Theme.of(context).platform == TargetPlatform.iOS
                                 ? EdgeInsets.fromLTRB(4, 0, 4, 15)
-                                : EdgeInsets.fromLTRB(4, 0, 4, 13),
+                                : EdgeInsets.fromLTRB(4, 0, 4, 0),
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(
                           fontSize: 14,

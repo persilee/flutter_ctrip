@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ctrip/dao/search_dao.dart';
 import 'package:flutter_ctrip/model/seach_model.dart';
 import 'package:flutter_ctrip/pages/speak_page.dart';
@@ -50,6 +51,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
       body: Column(
         children: <Widget>[

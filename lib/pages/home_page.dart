@@ -28,7 +28,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   double appBarAlpha = 0;
   List<CommonModel> localNavList = [];
   GridNavModel gridNavModel;
@@ -41,11 +40,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _handleRefresh();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
       backgroundColor: Color(0xfffafafc),
       body: LoadingContainer(
@@ -78,12 +77,12 @@ class _HomePageState extends State<HomePage> {
                                 itemCount: bannerList.length,
                                 autoplay: true,
                                 pagination: SwiperPagination(
-                                    builder: SquareSwiperPagination(
-                                      size: 6,
-                                      activeSize: 6,
-                                      color: Colors.white.withAlpha(80),
-                                      activeColor: Colors.white,
-                                    ),
+                                  builder: SquareSwiperPagination(
+                                    size: 6,
+                                    activeSize: 6,
+                                    color: Colors.white.withAlpha(80),
+                                    activeColor: Colors.white,
+                                  ),
                                   alignment: Alignment.bottomRight,
                                   margin: EdgeInsets.fromLTRB(0, 0, 14, 28),
                                 ),
@@ -173,14 +172,18 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.fromLTRB(14, 20, 0, 0),
             height: 86.0,
             decoration: BoxDecoration(
-              color: Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255),
-              boxShadow: [BoxShadow(
-                color: appBarAlpha == 1.0 ? Colors.black12 : Colors.transparent,
-                offset: Offset(2, 3),
-                blurRadius: 6,
-                spreadRadius: 0.6,
-              ),]
-            ),
+                color:
+                    Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255),
+                boxShadow: [
+                  BoxShadow(
+                    color: appBarAlpha == 1.0
+                        ? Colors.black12
+                        : Colors.transparent,
+                    offset: Offset(2, 3),
+                    blurRadius: 6,
+                    spreadRadius: 0.6,
+                  ),
+                ]),
             child: SearchBar(
               searchBarType: appBarAlpha > 0.2
                   ? SearchBarType.homeLight
@@ -211,6 +214,7 @@ class _HomePageState extends State<HomePage> {
       alpha = 0;
     } else if (alpha > 1) {
       alpha = 1;
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     }
     setState(() {
       appBarAlpha = alpha;
@@ -256,11 +260,15 @@ class _HomePageState extends State<HomePage> {
     NavigatorUtil.push(
       context,
       WebView(
-        url: 'https://m.ctrip.com/webapp/servicechatv2/messagelist/?from=%2Fwebapp%2Fmyctrip%2Findex',
+        url:
+            'https://m.ctrip.com/webapp/servicechatv2/messagelist/?from=%2Fwebapp%2Fmyctrip%2Findex',
         hideHead: false,
         hideAppBar: false,
         title: '我的消息',
       ),
+      callBack: () {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+      }
     );
   }
 }

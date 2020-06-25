@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
@@ -95,6 +96,7 @@ class _WebViewState extends State<WebView> {
     } else {
       backButtonColor = Colors.white;
     }
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
       body: MediaQuery.removePadding(
         removeTop: true,

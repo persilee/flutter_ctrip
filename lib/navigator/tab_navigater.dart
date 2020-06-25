@@ -9,7 +9,8 @@ class TabNavigator extends StatefulWidget {
   _TabNavigatorState createState() => _TabNavigatorState();
 }
 
-class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
+class _TabNavigatorState extends State<TabNavigator>
+    with AutomaticKeepAliveClientMixin, SingleTickerProviderStateMixin {
   final _defaultColor = Color(0xff8a8a8a);
   final _activeColor = Color(0xff50b4ed);
   int _currentIndex = 0;
@@ -46,7 +47,10 @@ class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClie
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) {
-            _controller.animateToPage(index, curve: Curves.easeIn , duration: Duration(milliseconds: 260));
+            _controller.animateToPage(
+                index,
+                curve: Curves.easeIn, duration: Duration(milliseconds: 260)
+            );
             setState(() {
               _currentIndex = index;
             });
@@ -55,8 +59,16 @@ class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClie
           selectedFontSize: 12,
           items: [
             BottomNavigationBarItem(
-              icon: Image.asset('images/xiecheng.png',width: 22,height: 22,),
-              activeIcon: Image.asset('images/xiecheng_active.png',width: 22,height: 22,),
+              icon: Image.asset(
+                'images/xiecheng.png',
+                width: 22,
+                height: 22,
+              ),
+              activeIcon: Image.asset(
+                'images/xiecheng_active.png',
+                width: 22,
+                height: 22,
+              ),
               title: Text(
                 '首页',
                 style: TextStyle(
@@ -65,8 +77,16 @@ class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClie
               ),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('images/mude.png',width: 24,height: 24,),
-              activeIcon: Image.asset('images/mude_active.png',width: 24,height: 24,),
+              icon: Image.asset(
+                'images/mude.png',
+                width: 24,
+                height: 24,
+              ),
+              activeIcon: Image.asset(
+                'images/mude_active.png',
+                width: 24,
+                height: 24,
+              ),
               title: Text(
                 '目的地',
                 style: TextStyle(
@@ -75,8 +95,16 @@ class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClie
               ),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('images/lvpai.png',width: 23,height: 23,),
-              activeIcon: Image.asset('images/lvpai_active.png',width: 23,height: 23,),
+              icon: Image.asset(
+                'images/lvpai.png',
+                width: 23,
+                height: 23,
+              ),
+              activeIcon: Image.asset(
+                'images/lvpai_active.png',
+                width: 23,
+                height: 23,
+              ),
               title: Text(
                 '旅拍',
                 style: TextStyle(
@@ -85,8 +113,16 @@ class _TabNavigatorState extends State<TabNavigator> with AutomaticKeepAliveClie
               ),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('images/wode.png',width: 23,height: 23,),
-              activeIcon: Image.asset('images/wode_active.png',width: 23,height: 23,),
+              icon: Image.asset(
+                'images/wode.png',
+                width: 23,
+                height: 23,
+              ),
+              activeIcon: Image.asset(
+                'images/wode_active.png',
+                width: 23,
+                height: 23,
+              ),
               title: Text(
                 '我的',
                 style: TextStyle(

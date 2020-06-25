@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ctrip/dao/destination_dao.dart';
 import 'package:flutter_ctrip/model/destination_model.dart';
 import 'package:flutter_ctrip/pages/destination_search_page.dart';
@@ -28,6 +29,7 @@ class _DestinationPageState extends State<DestinationPage> with AutomaticKeepAli
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     if (tabs.length > 0 && tabPages.length > 0) {
       setState(() {
         _isLoading = false;
