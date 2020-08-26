@@ -73,6 +73,7 @@ android {
         pickFirst 'lib/armeabi-v7a/libflutter.so'
         pickFirst 'lib/arm64-v8a/libapp.so'
         pickFirst 'lib/armeabi-v7a/libapp.so'
+        pickFirst 'lib/x86_64/libapp.so'
     }
 }
 
