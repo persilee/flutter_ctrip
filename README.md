@@ -24,7 +24,7 @@ Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterc
 
 ### 特别提醒
 
-由于百度AI语言识别SDK包的 `libBaiduSpeechSDK.a` 有 **184.2M**，放到GitHub上下载很慢，所以，请[点击下载 libBaiduSpeechSDK.a 文件](https://speech-doc.gz.bcebos.com/ios-asr/ASR_iOS_v3.0.9.0_20200107_Release.zip)，
+由于百度AI语言识别SDK包的 `libBaiduSpeechSDK.a` 有 **184.2M**，放到GitHub上下载很慢，所以，请[点击下载 libBaiduSpeechSDK.a 文件](https://ai.baidu.com/download?sdkId=32)，
 解压后，把 `BDSClientLib/libBaiduSpeechSDK.a` 目录放到 `flutter_ctrip/ios/Plugin/ASRPlugin/` 目录下。
 
 如想了解更多关于 **Flutter** 信息，请关注我的博客文章
@@ -41,6 +41,7 @@ Blog地址 : [https://h.lishaoy.net/flutterctrip](https://h.lishaoy.net/flutterc
 
 ### 更新日志
 
+- 202-09-15 22:36 优化 搜索框提示文字错位问题
 - 202-06-25 04:55 优化 状态栏（使用 SystemUiOverlayStyle 实现沉浸式状态栏）
 - 202-06-25 01:55 优化 旅拍页面（新增加载更多指示器）
 - 202-06-24 23:56 优化 tab navigation（使用 AutomaticKeepAliveClientMixin 保活页面，加入页面切换动画）

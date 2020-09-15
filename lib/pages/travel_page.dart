@@ -29,7 +29,6 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
       body: Column(
         children: <Widget>[
